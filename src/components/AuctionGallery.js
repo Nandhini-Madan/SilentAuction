@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import axios from 'axios'; // will upgrade to axiosWithAuth
 import styled from 'styled-components';
 
@@ -47,7 +48,7 @@ const AuctionGallery = () => {
         axios
             .get('https://reqres.in/api/users')
             .then(response => {
-                console.log('axios: ', response.data.data);
+                // console.log('axios: ', response.data.data);
                 setItemArray(response.data.data);
             })
             .catch(error => {
@@ -61,16 +62,21 @@ const AuctionGallery = () => {
     }, [])
 
     // ternary causes items to display if they exist, else displays nothing
+    // Link sets path in browser to /auctionlist/item/ and the unique item ID
     return (
-        console.log('in return: ', itemArray),
+        // console.log('in return: ', itemArray),
         <Section>
-            {(itemArray ?
-                itemArray.map(item => (
-                    <div className='item-container' key={item.id}>
-                        <img src={item.avatar} alt={item.email}></img>
-                        <p className='title'>{item.email}</p>
-                    </div>
-                )) : null)}
+            <Router>
+                {(itemArray ?
+                    itemArray.map(item => (
+                        <Link to={`/auctionlist/item/${item.id}`} key={item.id}>
+                            <div className='item-container'>
+                                <img src={item.avatar} alt={item.email}></img>
+                                <p className='title'>{item.email}</p>
+                            </div>
+                        </Link>
+                    )) : null)}
+            </Router>
         </Section>
     )
 };
