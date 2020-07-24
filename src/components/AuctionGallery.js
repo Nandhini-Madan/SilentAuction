@@ -18,7 +18,8 @@ const Section = styled.section`
         text-align: center;
 
         img {
-            border-radius: 1rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
             width: 100%;
             opacity: .6;
             cursor: pointer;
@@ -32,7 +33,7 @@ const Section = styled.section`
             color: white;
             background: rgba(0,0,0,0.65);
             position: absolute;
-            top: 90%;
+            top: 75%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
