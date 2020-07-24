@@ -29,6 +29,9 @@ function Login(props) {
         if (loginState.username && loginState.password) {
             setButtonDisabled(false);
         }
+        else if (!loginState.username || !loginState.password) {
+            setButtonDisabled(true);
+        }
     }, [loginState]);
 
     //validate whether value meets the schema
