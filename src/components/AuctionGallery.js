@@ -20,6 +20,11 @@ const Section = styled.section`
         img {
             border-radius: 1rem;
             width: 100%;
+            opacity: .6;
+            cursor: pointer;
+            :hover {
+                opacity: 1;
+            }
         }
 
         .title {
