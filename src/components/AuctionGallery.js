@@ -1,6 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // will upgrade to axiosWithAuth
+import styled from 'styled-components';
 
+const Section = styled.section`
+    // border: 1px solid red;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    .item-container {
+        // border: 1px solid orange;
+        margin: .5rem;
+        width: 15rem;
+        diplay: flex;
+        flex-direction: column;
+        position: relative;
+        text-align: center;
+
+        img {
+            border-radius: 1rem;
+            width: 100%;
+        }
+
+        .title {
+            width: 100%;
+            color: white;
+            background: rgba(0,0,0,0.65);
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+`
 const AuctionGallery = () => {
     const [itemArray, setItemArray] = useState(); // array of auctions/items
 
@@ -25,14 +57,15 @@ const AuctionGallery = () => {
     // ternary causes items to display if they exist, else displays nothing
     return (
         console.log('in return: ', itemArray),
-        <section>
+        <Section>
             {(itemArray ?
                 itemArray.map(item => (
-                    <div key={item.id}>
-                        <p>{item.email}</p>
+                    <div className='item-container' key={item.id}>
+                        <img src={item.avatar} alt={item.email}></img>
+                        <p className='title'>{item.email}</p>
                     </div>
                 )) : null)}
-        </section>
+        </Section>
     )
 };
 
