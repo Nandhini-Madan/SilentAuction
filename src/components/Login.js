@@ -81,25 +81,27 @@ function Login(props) {
     };
 
     return (
-        <form onSubmit={loginSubmit}>
-            <Input
-                type="text"
-                name="username"
-                onChange={inputChange}
-                value={loginState.username}
-                label="User Name"
-                errors={errors}
-            />
-            <Input
-                type="password"
-                name="password"
-                onChange={inputChange}
-                value={loginState.password}
-                label="Password"
-                errors={errors}
-            />
-            <button disabled={buttonDisabled}>Login</button>
-        </form>
+        <div className="formContainer">
+            <form onSubmit={loginSubmit}>
+                <Input
+                    type="text"
+                    name="username"
+                    onChange={inputChange}
+                    value={loginState.username}
+                    label="User Name"
+                    errors={errors}
+                />
+                <Input
+                    type="password"
+                    name="password"
+                    onChange={inputChange}
+                    value={loginState.password}
+                    label="Password"
+                    errors={errors}
+                />
+                <button disabled={buttonDisabled}>Login</button>
+            </form>
+        </div>
     )
 };
 
