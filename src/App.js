@@ -1,11 +1,13 @@
-// import React from '../node_modules/@types/react';
 import React from 'react';
+import { Route } from 'react-router-dom';
 import AuctionGallery from './components/AuctionGallery';
+import DisplayAuctionItems from './components/DisplayAuctionItem';
 
 function App() {
   return (
     <div>
-      <AuctionGallery />
+      <Route exact path='/' component={AuctionGallery} />
+      <Route path='/item' component={DisplayAuctionItems} />
     </div>
   );
 }

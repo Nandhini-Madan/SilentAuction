@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios'; // will upgrade to axiosWithAuth
 import styled from 'styled-components';
 
@@ -62,21 +62,20 @@ const AuctionGallery = () => {
     }, [])
 
     // ternary causes items to display if they exist, else displays nothing
-    // Link sets path in browser to /auctionlist/item/ and the unique item ID
+    // Link sets path in browser to /item/ and the unique item ID
     return (
         // console.log('in return: ', itemArray),
         <Section>
-            <Router>
-                {(itemArray ?
-                    itemArray.map(item => (
-                        <Link to={`/auctionlist/item/${item.id}`} key={item.id}>
-                            <div className='item-container'>
-                                <img src={item.avatar} alt={item.email}></img>
-                                <p className='title'>{item.email}</p>
-                            </div>
-                        </Link>
-                    )) : null)}
-            </Router>
+            {(itemArray ?
+                itemArray.map(item => (
+                    <Link to={`/item/${item.id}`} key={item.id}>
+                        <div className='item-container'>
+                            <img src={item.avatar} alt={item.email}></img>
+                            <p className='title'>{item.email}</p>
+                        </div>
+                    </Link>
+                )) : null
+            )}
         </Section>
     )
 };
