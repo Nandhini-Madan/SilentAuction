@@ -1,31 +1,11 @@
-// import React, { useState, useEffect } from 'react';
 import React, { useContext } from 'react';
 import { AuctionsContext } from './AuctionsContext';
 import { Link } from 'react-router-dom';
-// import axios from 'axios'; // will upgrade to axiosWithAuth
 import styled from 'styled-components';
 
 const AuctionGallery = () => {
-    // const [itemArray, setItemArray] = useState(); // array of auctions/items
-    const [itemsArray, setItemsArray] = useContext(AuctionsContext); // replaces ueState
-
-    // // function to get auction items for gallery display
-    // const getItems = () => {
-    //     axios
-    //         .get('https://reqres.in/api/users')
-    //         .then(response => {
-    //             // console.log('axios: ', response.data.data);
-    //             setItemArray(response.data.data);
-    //         })
-    //         .catch(error => {
-    //             console.log('axios error: ', error);
-    //         })
-    // }
-
-    // // runs getItems once, when component loads (empty dependency array)
-    // useEffect(() => {
-    //     getItems();
-    // }, [])
+    // replaced useState with useContext and AuctionsContext
+    const [itemsArray, setItemsArray] = useContext(AuctionsContext);
 
     // ternary causes items to display if they exist, else displays nothing
     // Link sets path in browser to /item/ and the unique item ID

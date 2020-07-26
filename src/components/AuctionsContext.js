@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react';
-import axios from 'axios';
+import axios from 'axios'; // will upgrade to axiosWithAuth
 
 // context (shares provider data to components)
 export const AuctionsContext = createContext();
