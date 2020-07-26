@@ -27,10 +27,12 @@ const AuctionGallery = () => {
     // ternary causes items to display if they exist, else displays nothing
     // Link sets path in browser to /item/ and the unique item ID
     return (
-        // console.log('in return: ', itemArray),
+        console.log('in return: ', itemArray),
         <Section>
             {(itemArray ?
                 itemArray.map(item => (
+                    // "to" string literal populates first param. It dynamically
+                    // modifies URL, which useParam reads in DisplayAuctionItem.
                     <Link to={`/item/${item.id}`} key={item.id}>
                         <div className='item-container'>
                             <img src={item.avatar} alt={item.email}></img>
