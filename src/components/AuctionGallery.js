@@ -1,36 +1,39 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { AuctionsContext } from './AuctionsContext';
 import { Link } from 'react-router-dom';
-import axios from 'axios'; // will upgrade to axiosWithAuth
+// import axios from 'axios'; // will upgrade to axiosWithAuth
 import styled from 'styled-components';
 
 const AuctionGallery = () => {
-    const [itemArray, setItemArray] = useState(); // array of auctions/items
+    // const [itemArray, setItemArray] = useState(); // array of auctions/items
+    const [itemsArray, setItemsArray] = useContext(AuctionsContext); // replaces ueState
 
-    // function to get auction items for gallery display
-    const getItems = () => {
-        axios
-            .get('https://reqres.in/api/users')
-            .then(response => {
-                // console.log('axios: ', response.data.data);
-                setItemArray(response.data.data);
-            })
-            .catch(error => {
-                console.log('axios error: ', error);
-            })
-    }
+    // // function to get auction items for gallery display
+    // const getItems = () => {
+    //     axios
+    //         .get('https://reqres.in/api/users')
+    //         .then(response => {
+    //             // console.log('axios: ', response.data.data);
+    //             setItemArray(response.data.data);
+    //         })
+    //         .catch(error => {
+    //             console.log('axios error: ', error);
+    //         })
+    // }
 
-    // runs getItems once, when component loads (empty dependency array)
-    useEffect(() => {
-        getItems();
-    }, [])
+    // // runs getItems once, when component loads (empty dependency array)
+    // useEffect(() => {
+    //     getItems();
+    // }, [])
 
     // ternary causes items to display if they exist, else displays nothing
     // Link sets path in browser to /item/ and the unique item ID
     return (
-        console.log('in return: ', itemArray),
+        console.log('in return: ', itemsArray),
         <Section>
-            {(itemArray ?
-                itemArray.map(item => (
+            {(itemsArray ?
+                itemsArray.map(item => (
                     // "to" string literal populates first param. It dynamically
                     // modifies URL, which useParam reads in DisplayAuctionItem.
                     <Link to={`/item/${item.id}`} key={item.id}>
