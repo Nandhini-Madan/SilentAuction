@@ -3,43 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'; // will upgrade to axiosWithAuth
 import styled from 'styled-components';
 
-const Section = styled.section`
-    // border: 1px solid red;
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-
-    .item-container {
-        // border: 1px solid orange;
-        margin: .5rem;
-        width: 15rem;
-        diplay: flex;
-        flex-direction: column;
-        position: relative;
-        text-align: center;
-
-        img {
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-            width: 100%;
-            opacity: .6;
-            cursor: pointer;
-            :hover {
-                opacity: 1;
-            }
-        }
-
-        .title {
-            width: 100%;
-            color: white;
-            background: rgba(0,0,0,0.65);
-            position: absolute;
-            top: 75%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    }
-`
 const AuctionGallery = () => {
     const [itemArray, setItemArray] = useState(); // array of auctions/items
 
@@ -80,4 +43,41 @@ const AuctionGallery = () => {
     )
 };
 
+const Section = styled.section`
+    // border: 1px solid red;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    .item-container {
+        // border: 1px solid orange;
+        margin: .5rem;
+        width: 15rem;
+        diplay: flex;
+        flex-direction: column;
+        position: relative;
+        text-align: center;
+
+        img {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            width: 100%;
+            opacity: .6;
+            cursor: pointer;
+            :hover {
+                opacity: 1;
+            }
+        }
+
+        .title {
+            width: 100%;
+            color: white;
+            background: rgba(0,0,0,0.65);
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+`
 export default AuctionGallery;
