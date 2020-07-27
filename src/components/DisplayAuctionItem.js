@@ -7,15 +7,11 @@ const DisplayAuctionItem = () => {
     const [itemsArray, setItemsArray] = useContext(AuctionsContext);
     const params = useParams();
     const [auctionItem, setAuctionItem] = useState({});
-    // console.log('params: ', params);
-    // console.log('Auction Items: ', itemsArray)
-    // let auctionItem = itemsArray[Number(params.itemID - 1)]
-    // console.log('auctionItem: ', auctionItem)
-    // console.log(auctionItem.id)
 
+    // find item in Context using item ID from params. set to local state.
     useEffect(
         () => {
-            setAuctionItem(itemsArray.find(x => x.id === Number(params.itemID)))
+            setAuctionItem(itemsArray.find(item => item.id === Number(params.itemID)))
         }, [itemsArray, params.itemID]
     )
 
