@@ -16,7 +16,7 @@ const DisplayAuctionItem = () => {
     useEffect(
         () => {
             setAuctionItem(itemsArray.find(x => x.id === Number(params.itemID)))
-        }, [params.itemsID]
+        }, [itemsArray, params.itemID]
     )
 
     return (
