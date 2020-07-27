@@ -46,7 +46,6 @@ const Section = styled.section`
         width: clamp(15rem, 50%, 30rem);
         diplay: flex;
         flex-direction: column;
-        position: relative;
 
         .name {
             font-size: 2rem;
