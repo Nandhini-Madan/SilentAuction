@@ -84,14 +84,14 @@ const Registeration = props => {
         <div className="formContainer">
             <form onSubmit={SubmitForm}>
                 
-                <label>
-                    <input defaultChecked="Seller" type='radio' name='UserType' onChange={inputChange} data-cy='Seller' value='Seller' />
-                Seller
-                </label>
+                
+                <input  defaultChecked="Seller" type='radio' name='UserType' onChange={inputChange} data-cy='Seller' value='Seller' />
+                <label>Seller</label>
                 <label>
                     <input type='radio' name='UserType' onChange={inputChange} data-cy='Bidder' value='Bidder' />
                    Bidder
                 </label>
+               
                 <Input
                     type="text"
                     name="Name"
