@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const DisplayAuctionItem = () => {
-    const [itemsArray, setItemsArray] = useContext(AuctionsContext);
+    const [itemsArray] = useContext(AuctionsContext);
     const params = useParams();
     const [auctionItem, setAuctionItem] = useState({});
 
