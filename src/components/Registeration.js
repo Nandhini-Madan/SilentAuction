@@ -16,8 +16,11 @@ const Registeration = props => {
     const FormSchema = yup.object().shape({
         UserType: yup.string().notRequired(),
         Name: yup.string().required("Please Enter Your Name").min(2, "This is not your real name"),
-        Email: yup.string().required("Please Enter email"),
-        Password: yup.string().required("Please enter a password"),
+        Email: yup.string().email().required("Please Enter email"),
+        Password: yup.string().required("Please enter a password") .matches(
+            /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+            "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+          ),
         Retype_Password: yup
             .string()
             .required("Please confirm your password")
@@ -42,6 +45,7 @@ const Registeration = props => {
     const inputChange = event => {
         event.persist();
         const value = event.target.value;
+       
         yup.reach(FormSchema, event.target.name)
             .validate(value)
             .then(
@@ -58,6 +62,7 @@ const Registeration = props => {
                 }
 
             )
+            
 
         SetFormState({
             ...FormState,
