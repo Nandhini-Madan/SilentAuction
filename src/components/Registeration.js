@@ -77,21 +77,21 @@ const Registeration = props => {
         event.preventDefault();
         console.log("Formdata", FormState);
         axios.post("https://reqres.in/api/users", FormState)
-        .then(() => console.log('Form Submitted'))
-        .catch(err => console.log('There was a error in form', err));
+            .then(() => console.log('Form Submitted'))
+            .catch(err => console.log('There was a error in form', err));
     }
     return (
         <div className="formContainer">
             <form onSubmit={SubmitForm}>
-                
-                
-                <input  defaultChecked="Seller" type='radio' name='UserType' onChange={inputChange} data-cy='Seller' value='Seller' />
-                <label>Seller</label>
-                <label>
+
+                <div className="RadioContainer">
+                    <label>Seller</label>
+                    <input defaultChecked="Seller" type='radio' name='UserType' onChange={inputChange} data-cy='Seller' value='Seller' />
+
+                    <label> Bidder</label>
                     <input type='radio' name='UserType' onChange={inputChange} data-cy='Bidder' value='Bidder' />
-                   Bidder
-                </label>
-               
+                </div>
+
                 <Input
                     type="text"
                     name="Name"
@@ -124,9 +124,10 @@ const Registeration = props => {
                     label="Retype Password"
                     errors={Error}
                 />
-                
+                <div className="TermsContainer">
                 <input type="checkbox" name="Terms" onChange={inputChange} value={true} errors={Error} />
-                <label>Terms</label>
+                <label>Please Accept our Terms and conditions</label>
+                </div>
                 <button disabled={Disablebutton}>Submit</button>
             </form>
         </div>
