@@ -6,14 +6,14 @@ export const AuctionsContext = createContext();
 
 // provider (holds the data for contect to share)
 export const AuctionsProvider = (props) => {
-    const [itemsArray, setItemsArray] = useState();
+    const [itemsArray, setItemsArray] = useState([]);
 
     // function to get auction items for gallery display
     const getItems = () => {
         axios
             .get('https://reqres.in/api/users')
             .then(response => {
-                console.log('axios in context: ', response.data.data);
+                // console.log('axios in context: ', response.data.data);
                 setItemsArray(response.data.data);
             })
             .catch(error => {
@@ -26,7 +26,7 @@ export const AuctionsProvider = (props) => {
         getItems();
     }, [])
 
-    console.log('Auction Items: ', itemsArray)
+    // console.log('Auction Items: ', itemsArray)
 
     return (
         // shares context/state to all child components

@@ -10,7 +10,7 @@ const AuctionGallery = () => {
     // ternary causes items to display if they exist, else displays nothing
     // Link sets path in browser to /item/ and the unique item ID
     return (
-        console.log('in return: ', itemsArray),
+        // console.log('in return: ', itemsArray),
         <Section>
             {(itemsArray ?
                 itemsArray.map(item => (
