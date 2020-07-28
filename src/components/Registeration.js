@@ -5,10 +5,10 @@ import * as yup from "yup";
 const Registeration = props => {
     //Initial state
     const defaultState = {
-        Name: "",
-        Email: "",
-        Password: "",
-        Retype_Password: "",
+        username: "",
+        email: "",
+        password: "",
+        retype_password: "",
         UserType: "seller",
         Terms: false
     }
@@ -99,23 +99,23 @@ const Registeration = props => {
 
                 <Input
                     type="text"
-                    name="Name"
+                    name="username"
                     onChange={inputChange}
                     value={FormState.Name}
                     label="Name"
                     errors={Error}
                 />
                 <Input
-                    type="Email"
-                    name="Email"
+                    type="email"
+                    name="email"
                     onChange={inputChange}
                     value={FormState.Email}
                     label="Email"
                     errors={Error}
                 />
                 <Input
-                    type="Password"
-                    name="Password"
+                    type="password"
+                    name="password"
                     onChange={inputChange}
                     value={FormState.Password}
                     label="Password"
