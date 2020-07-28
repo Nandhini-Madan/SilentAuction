@@ -1,13 +1,23 @@
 import React from "react";
 import {Link,Route,Switch} from 'react-router-dom';
 import Registeration from './components/Registeration';
-import Header from "./components/Header";
 import Login from "./components/Login";
+import { AuctionsProvider } from './components/AuctionsContext';
+import AuctionGallery from './components/AuctionGallery';
+import DisplayAuctionItem from './components/DisplayAuctionItem';
+import Header from './components/header';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div className='container'>
-      <Header/>
+    <AuctionsProvider>
+      <div className='container'>
+        <Route exact path='/' component={AuctionGallery} />
+        {/* <Route path='/item/:itemID' component={DisplayAuctionItem} /> */}
+        <Route path='/item/:itemID'>
+          <DisplayAuctionItem />
+        </Route>
+        <Header/>
       <Switch>
         <Route path="/login">
           <Login/>
@@ -18,6 +28,7 @@ function App() {
 
       </Switch>
     </div>
+    </AuctionsProvider>
   );
 }
 
