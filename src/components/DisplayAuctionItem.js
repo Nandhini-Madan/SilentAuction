@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AuctionsContext } from './AuctionsContext';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const DisplayAuctionItem = () => {
     const [itemsArray] = useContext(AuctionsContext);
@@ -14,6 +15,18 @@ const DisplayAuctionItem = () => {
             setAuctionItem(itemsArray.find(item => item.id === Number(params.itemID)))
         }, [itemsArray, params.itemID]
     )
+
+    const deleteItem = event => {
+        // event.preventDefault();
+        console.log('Delete ID: ', params.itemID);
+        axios
+            .delete(`https://reqres.in/api/users/${Number(params.itemID)}`)
+            .then(response => {
+                console.log('Delete Results: ', response);
+                // setItemsArray(response.data.data);
+            })
+            .catch(error => console.log('DELETE Error: ', error));
+    }
 
     return (
         <Section>
@@ -28,7 +41,7 @@ const DisplayAuctionItem = () => {
                     </section>
                     <div className='button-holder'>
                         <Link to={`/auctions`}><button>Modify Auction</button></Link>
-                        <Link to={`/auctions`}><button>Delete Auction</button></Link>
+                        <Link to={`/auctions`}><button onClick={deleteItem}>Delete Auction</button></Link>
                         <Link to={`/auctions`}><button>Auction List</button></Link>
                     </div>
                 </section>
