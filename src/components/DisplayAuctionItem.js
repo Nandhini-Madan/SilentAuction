@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuctionsContext } from './AuctionsContext';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const DisplayAuctionItem = () => {
@@ -23,6 +23,9 @@ const DisplayAuctionItem = () => {
                     <img src={auctionItem.avatar} alt={auctionItem.email}></img>
                     <div>Description: {auctionItem.first_name} {auctionItem.last_name}</div>
                     <div>Starting Price: {auctionItem.email}</div>
+                    <div className='button-holder'>
+                        <Link to={`/auctions`}><button>Return to auction list</button></Link>
+                    </div>
                 </section>
             }
         </Section>
@@ -52,6 +55,16 @@ const Section = styled.section`
             border-top-left-radius: 1rem;
             border-top-right-radius: 1rem;
             width: 100%;
+        }
+
+        .button-holder {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            width: 20rem;
+            margin-top: 1rem;
         }
     }
 `
