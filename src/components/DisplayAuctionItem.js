@@ -41,6 +41,9 @@ const background1 = '#C99946';
 const buttonText2 = '#EDEBE1';
 const background2 = '#C05934';
 const textshadow = '#C05934';
+const background3 = '#A59E69';
+const containerBorder = '#34362F';
+
 const Section = styled.section`
     // border: 1px solid red;
     padding: 1rem;
@@ -73,13 +76,15 @@ const Section = styled.section`
             border-top: 1px solid ${buttonText2};
             border-right: 1px solid ${buttonText2};
             border-left: 1px solid ${buttonText2};
+            border-bottom: 1px solid ${containerBorder};
         }
 
         .detail-container {
-            background: #A59E69;
+            background: ${background3};
             border-radius: 1rem;
-            border: 1px solid #34362F;
+            border: 1px solid ${containerBorder};
             padding: 1rem;
+            margin-top: 1rem;
         }
 
         .details {
@@ -96,11 +101,14 @@ const Section = styled.section`
             justify-content: space-evenly;
             margin-top: 1rem;
             margin-bottom: 3rem;
+            background: ${background3};
+            border-radius: 1rem;
+            border: 1px solid ${containerBorder};
+            padding: 1rem;
         }
 
         button {
-            width: 12rem;
-            margin-top: 1rem;
+            width: 8rem;
             border-radius: 1rem;
             font-size: 1.25rem;
             background: ${background1};
@@ -112,10 +120,6 @@ const Section = styled.section`
 
         @media screen and (max-width: 768px) {
             font-size: 1.5rem;
-
-            button {
-                width: 10rem;
-            }
         }
     }
 `
