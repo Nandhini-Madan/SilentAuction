@@ -109,6 +109,14 @@ const Section = styled.section`
                 color: ${buttonText2};
             }
         }
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.5rem;
+
+            button {
+                width: 10rem;
+            }
+        }
     }
 `
 export default DisplayAuctionItem;
