@@ -1,5 +1,6 @@
 import '../css/index.css';
 import React, { useState, useEffect } from 'react';
+
 function UploadImage(props) {
     const [image, setImage] = useState('')
     const [loading, setLoading] = useState(false)
@@ -25,16 +26,21 @@ function UploadImage(props) {
         //console.log(data.values())
     }
     useEffect (()=>{
-        props.setImage(image)
+        setImage(image)
     }, [image])
     return (
         <div className="upload" >
-            <h1>Upload Image</h1>
-            <input type='file'
+            <label>
+                Upload Image
+            <input 
+                className="upload"
                 type='file'
+                type='file'
+                name="uploadImage"
                 placeholder='Upload an image'
                 onChange={uploadImage}
             />
+            </label>
             {loading ? (
                 <h3 className="imageContainer">Loading</h3>
             ) : (

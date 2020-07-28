@@ -6,6 +6,7 @@ import AuctionGallery from './components/AuctionGallery';
 import DisplayAuctionItem from './components/DisplayAuctionItem';
 import Header from './components/header';
 import { Route, Switch } from 'react-router-dom';
+import CreateAuction from "./components/CreateAuction";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         <Route path='/Register'>
 	        <Registeration/>
 	      </Route>
+        <Route path='/createAuction'>
+          <CreateAuction/>
+        </Route>
 
       </Switch>
     </div>
