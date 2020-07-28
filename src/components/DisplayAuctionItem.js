@@ -40,6 +40,7 @@ const Section = styled.section`
     justify-content: center;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-size: 1.75rem;
+    color: #EDEBE1;
 
     .item-container {
         border: 1px solid orange;
@@ -65,9 +66,10 @@ const Section = styled.section`
         }
 
         button {
-            width: 20rem;
+            width: 16rem;
             margin-top: 1rem;
             border-radius: 1rem;
+            font-size: 1.25rem;
             :hover {
                 background: black;
                 color: white;
