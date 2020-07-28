@@ -15,17 +15,17 @@ const Registeration = props => {
     // Form Schema 
     const FormSchema = yup.object().shape({
         UserType: yup.string().notRequired(),
-        Name: yup.string().required("Please Enter Your Name").min(2, "This is not your real name"),
-        Email: yup.string().email().required("Please Enter email"),
-        Password: yup.string().required("Please enter a password") .matches(
+        username: yup.string().required("Please Enter Your Name").min(2, "This is not your real name"),
+        email: yup.string().email().required("Please Enter email"),
+        password: yup.string().required("Please enter a password") .matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
             "Password must contain at least 8 characters, one uppercase, one number and one special case character"
           ),
-        Retype_Password: yup
+        retype_password: yup
             .string()
             .required("Please confirm your password")
             .when("Password", {
-                is: Password => (Password && Password.length > 0 ? true : false),
+                is: password => (password && password.length > 0 ? true : false),
                 then: yup.string().oneOf([yup.ref("Password")], "Password doesn't match")
             }),
         Terms: yup.boolean().oneOf([true], 'please accept out terms')
@@ -122,8 +122,8 @@ const Registeration = props => {
                     errors={Error}
                 />
                 <Input
-                    type="Password"
-                    name="Retype_Password"
+                    type="password"
+                    name="retype_password"
                     onChange={inputChange}
                     value={FormState.Retype_Password}
                     label="Retype Password"
