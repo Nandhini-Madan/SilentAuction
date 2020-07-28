@@ -73,7 +73,7 @@ function CreateAuction(props) {
         console.log(formState);
     };
 
-
+    
     return (
         <div className="formContainer">
             <form onSubmit={formSubmit}>
@@ -84,8 +84,7 @@ function CreateAuction(props) {
                     value={formState.itemName}
                     label="Item Name"
                     errors={errors}
-                />
-                <UploadImage/>
+                    />
                 <Input
                     type="text"
                     name="description"
@@ -93,7 +92,7 @@ function CreateAuction(props) {
                     value={formState.description}
                     label="Description"
                     errors={errors}
-                />
+                    />
                 <Input
                     type="text"
                     name="startingPrice"
@@ -101,14 +100,15 @@ function CreateAuction(props) {
                     value={formState.startingPrice}
                     label="Starting Price"
                     errors={errors}
-                />
+                    />
+                <UploadImage/>
                 <button disabled={buttonDisabled}>Create Auction</button>
             </form>
             <div className='auctionContainer'>
                 <h3>Open Auctions</h3>
-                <div className="auctionCard">
+                <div className="auctionList">
                     {auctions.map((auction, i) => (
-                        <div key={i} id="card" className='cards'>
+                        <div key={i} id="card" className='auctionCard'>
                             <div className='sub'>
                                 {auction.itemName}
                             </div>

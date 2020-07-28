@@ -35,7 +35,6 @@ function UploadImage(props) {
             <input 
                 className="upload"
                 type='file'
-                type='file'
                 name="uploadImage"
                 placeholder='Upload an image'
                 onChange={uploadImage}
@@ -44,7 +43,7 @@ function UploadImage(props) {
             {loading ? (
                 <h3 className="imageContainer">Loading</h3>
             ) : (
-                    <img src={image} style={{ width: '300px' }} />
+                    <img src={image} style={{ width: '300px' }} alt="uploaded image" />
                 )}
         </div>
     );
