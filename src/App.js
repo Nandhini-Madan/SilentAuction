@@ -12,8 +12,8 @@ function App() {
     <AuctionsProvider>
       <div className='container'>
         <Header />
-        <Route exact path='/' component={AuctionGallery} />
-        <Route path='/item/:itemID' component={DisplayAuctionItem} />
+        <Route exact path='/auctions' component={AuctionGallery} />
+        <Route path='/auctions/:itemID' component={DisplayAuctionItem} />
 
         <Switch>
           <Route path="/login">
