@@ -1,8 +1,10 @@
-import React from 'react';
+import React from "react";
+import {Link,Route,Switch} from 'react-router-dom';
+import Registeration from './components/Registeration';
+import Login from "./components/Login";
+import { AuctionsProvider } from './components/AuctionsContext';
 import AuctionGallery from './components/AuctionGallery';
 import DisplayAuctionItem from './components/DisplayAuctionItem';
-import { AuctionsProvider } from './components/AuctionsContext';
-import Login from './components/Login';
 import Header from './components/header';
 import { Route, Switch } from 'react-router-dom';
 
@@ -20,10 +22,14 @@ function App() {
         <Route path="/login">
           <Login/>
         </Route>
+        <Route path='/Register'>
+	        <Registeration/>
+	      </Route>
+
       </Switch>
-      </div>
+    </div>
     </AuctionsProvider>
-  )
+  );
 }
 
 export default App;

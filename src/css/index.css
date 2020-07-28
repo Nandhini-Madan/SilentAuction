@@ -164,6 +164,14 @@ nav {
   display: flex;
   align-items: center;
 }
+.RadioContainer{
+    display: flex;
+    flex-direction: row;
+}
+.TermsContainer{
+    display: flex;
+    flex-direction: row;
+}
 form {
   display: flex;
   flex-direction: column;

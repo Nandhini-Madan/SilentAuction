@@ -1,5 +1,4 @@
 import React from 'react';
-
 function Input(props) {
     const errorMessage = props.errors[props.name];
     return (
@@ -10,5 +9,4 @@ function Input(props) {
         </label>
     )
 };
-
 export default Input;
