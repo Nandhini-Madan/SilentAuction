@@ -244,18 +244,24 @@ input.upload {
 .auctionContainer {
   margin: 10px 0px;
   padding: 10px 0px;
+  text-align: center;
 }
 .auctionList {
   display: flex;
-  flex-wrap: row-wrap;
+  flex-flow: wrap;
+  justify-content: center;
 }
 .auctionCard {
   background: #5e725e;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.22), 0 8px 12px rgba(0, 0, 0, 0.24);
   width: 100%;
+  min-width: 200px;
   max-width: 250px;
   padding: 8px;
   margin: 12px 8px auto;
   text-align: left;
   border-radius: 10px;
+}
+img {
+  width: 50px;
 }

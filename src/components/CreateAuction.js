@@ -3,6 +3,7 @@ import UploadImage from './UploadImage';
 import * as yup from 'yup';
 import Input from './Input';
 import axios from 'axios';
+import AuctionCard from './AuctionCard';
 
 function CreateAuction(props) {
     const defaultState = {
@@ -104,24 +105,7 @@ function CreateAuction(props) {
                 <UploadImage/>
                 <button disabled={buttonDisabled}>Create Auction</button>
             </form>
-            <div className='auctionContainer'>
-                <h3>Open Auctions</h3>
-                <div className="auctionList">
-                    {auctions.map((auction, i) => (
-                        <div key={i} id="card" className='auctionCard'>
-                            <div className='sub'>
-                                {auction.itemName}
-                            </div>
-                            <div className='sub'>
-                                {auction.description}
-                            </div>
-                            <div className='sub'>
-                                {auction.startingPrice}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <AuctionCard auctions={auctions} />
         </div>
     )
 };
