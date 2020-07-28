@@ -40,6 +40,7 @@ const DisplayAuctionItem = () => {
 const background1 = '#C99946';
 const buttonText2 = '#EDEBE1';
 const background2 = '#C05934';
+const textshadow = '#C05934';
 const Section = styled.section`
     // border: 1px solid red;
     padding: 1rem;
@@ -62,6 +63,7 @@ const Section = styled.section`
             text-align: center;
             color: white;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px ${textshadow};
         }
 
         img {
