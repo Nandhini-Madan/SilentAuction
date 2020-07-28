@@ -17,7 +17,7 @@ const Registeration = props => {
         UserType: yup.string().notRequired(),
         Name: yup.string().required("Please Enter Your Name").min(2, "This is not your real name"),
         Email: yup.string().email().required("Please Enter email"),
-        Password: yup.string().required("Please enter a password") .matches(
+        Password: yup.string().required("Please enter a password").matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
             "Password must contain at least 8 characters, one uppercase, one number and one special case character"
           ),

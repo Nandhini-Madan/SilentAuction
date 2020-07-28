@@ -37,7 +37,7 @@ const Section = styled.section`
     .item-container {
         // border: 1px solid orange;
         margin: .5rem;
-        width: 15rem;
+        width: 25rem;
         diplay: flex;
         flex-direction: column;
         position: relative;
@@ -62,6 +62,8 @@ const Section = styled.section`
             top: 75%;
             left: 50%;
             transform: translate(-50%, -50%);
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 1.25rem;
         }
     }
 `

@@ -38,16 +38,18 @@ const Section = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 1.75rem;
 
     .item-container {
         border: 1px solid orange;
         padding: .5rem;
-        width: clamp(15rem, 50%, 30rem);
+        width: clamp(25rem, 50%, 50rem);
         diplay: flex;
         flex-direction: column;
 
         .name {
-            font-size: 2rem;
+            font-size: 2.25rem;
             text-align: center;
         }
 
@@ -65,6 +67,11 @@ const Section = styled.section`
         button {
             width: 20rem;
             margin-top: 1rem;
+            border-radius: 1rem;
+            :hover {
+                background: black;
+                color: white;
+            }
         }
     }
 `
