@@ -10,7 +10,7 @@ const Registeration = props => {
         userName: "",
         email: "",
         password: "",
-        Retype_Password: "",
+        retype_password: "",
         type: "seller",
         terms: false
     }
@@ -20,18 +20,18 @@ const Registeration = props => {
         firstName: yup.string().required("Please Enter Your first Name").min(2, "This is not your real name"),
         lastName: yup.string().required("please enter LAstname"),
         userName: yup.string().required("Please Enter Your Name").min(8, "This is not your real name"),
-        email: yup.string().email().required("Please Enter email"),
+        email:yup.string().email().required("Please Enter email"),
         password: yup.string().required("Please enter a password").matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
             "Password must contain at least 8 characters, one uppercase, one lowercase,one number and one special case character"
         ),
-        Retype_Password: yup
-            .string()
-            .required("Please confirm your password")
-            .when("password", {
-                is: password => (password && password.length > 0 ? true : false),
-                then: yup.string().oneOf([yup.ref("password")], "Password doesn't match")
-            }),
+        retype_password:yup
+                    .string()
+                    .required("Please confirm your password")
+                    .when("password", {
+                        is: password => (FormState.password===FormState.retype_password ? true : false),
+                        then: yup.string().oneOf([yup.ref("password")],"Password doesn't match")
+                    }),
         terms: yup.boolean().oneOf([true], 'please accept out terms')
     })
     const [FormState, SetFormState] = useState(defaultState);
@@ -89,11 +89,11 @@ const Registeration = props => {
             //       console.log("useeffect valid",valid)
             //   SetDisablebutton(!valid));
             {
-                if (FormState.terms && FormState.userName && FormState.firstName && FormState.lastName && FormState.password && FormState.Retype_Password) {
+                if (FormState.terms && FormState.userName && FormState.firstName && FormState.lastName && FormState.password && FormState.retype_password) {
 
                     SetDisablebutton(false);
                 }
-                else if (!FormState.terms || FormState.userName || FormState.firstName || FormState.lastName || FormState.password || FormState.Retype_Password) {
+                else if (!FormState.terms || FormState.userName || FormState.firstName || FormState.lastName || FormState.password || FormState.retype_password) {
                     SetDisablebutton(true);
                 }
             }
@@ -154,7 +154,7 @@ const Registeration = props => {
                     errors={Error}
                 />
                 <Input
-                    type="Password"
+                    type="text"
                     name="password"
                     onChange={inputChange}
                     value={FormState.password}
@@ -162,13 +162,14 @@ const Registeration = props => {
                     errors={Error}
                 />
                 <Input
-                    type="Password"
-                    name="Retype_Password"
+                    type="text"
+                    name="retype_password"
                     onChange={inputChange}
-                    value={FormState.Retype_Password}
+                    value={FormState.retype_password}
                     label="Retype Password"
                     errors={Error}
                 />
+
                 <div className="TermsContainer">
                     <input type="checkbox" name="terms" onChange={inputChange} checked={FormState.terms} errors={Error} />
                     <label>Please Accept our Terms and conditions</label>
