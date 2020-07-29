@@ -5,6 +5,8 @@ import * as yup from "yup";
 const Registeration = props => {
     //Initial state
     const defaultState = {
+        firstName: "",
+        lastName: "",
         username: "",
         email: "",
         password: "",
@@ -14,6 +16,8 @@ const Registeration = props => {
     }
     // Form Schema 
     const FormSchema = yup.object().shape({
+        firstName: yup.string().required(''),
+        lastName: yup.string().required(''),
         UserType: yup.string().notRequired(),
         username: yup.string().required("Please Enter Your Name").min(2, "This is not your real name"),
         email: yup.string().email().required("Please Enter email"),
@@ -89,7 +93,7 @@ const Registeration = props => {
             </div>
                 <Input
                     type="text"
-                    name="username"
+                    name="firstName"
                     onChange={inputChange}
                     value={FormState.firstName}
                     label="First Name"
@@ -97,7 +101,7 @@ const Registeration = props => {
                 />
                 <Input
                     type="text"
-                    name="username"
+                    name="lastName"
                     onChange={inputChange}
                     value={FormState.lastName}
                     label="Last Name"
