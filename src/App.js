@@ -8,7 +8,7 @@ import AuctionGallery from './components/AuctionGallery';
 import DisplayAuctionItem from './components/DisplayAuctionItem';
 import ModifyAuctionItems from './components/ModifyAuctionItems';
 import CreateAuction from "./components/CreateAuction";
-import AuctionCard from './components/AuctionCard';
+// import AuctionCard from './components/AuctionCard';
 
 function App() {
   return (

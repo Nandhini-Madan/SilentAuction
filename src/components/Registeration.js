@@ -25,7 +25,7 @@ const Registeration = props => {
             .string()
             .required("Please confirm your password")
             .when("Password", {
-                is: password => (FormState.password === FormState.password ? true : false),
+                is: password => (FormState.password === FormState.retype_password ? true : false),
                 then: yup.string().oneOf([yup.ref("Password")], "Password doesn't match")
             }),
         terms: yup.boolean().oneOf([true], 'please accept out terms')
@@ -135,10 +135,10 @@ const Registeration = props => {
                     label="Retype Password"
                     errors={Error}
                 />
-                {/*<div className="TermsContainer">
+                <div className="TermsContainer">
                     <input type="checkbox" name="terms" onChange={inputChange} checked={FormState.terms} errors={Error} />
                     <label>Please Accept our Terms and conditions</label>
-            </div>*/}
+            </div>
                 <button disabled={Disablebutton}>Submit</button>
             </form>
         </div>

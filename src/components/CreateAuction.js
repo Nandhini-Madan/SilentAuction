@@ -49,6 +49,17 @@ function CreateAuction(props) {
             .then((res) => {console.log('form submit success', res)
                 setAuctions([...auctions, res.data])})
             .catch(err => console.log('Form submission error', err));
+            resetState();
+    };
+
+    const resetState = () => {
+        setFormState({
+            itemName: "",
+            description: "",
+            startingPrice: "", 
+            imageUrl: ""
+        });
+        console.log(formState);
     };
 
     const inputChange = e => {

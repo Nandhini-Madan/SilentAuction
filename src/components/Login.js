@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosWithAuth from 'axios';
 import * as yup from 'yup';
 import Input from './Input';
 
