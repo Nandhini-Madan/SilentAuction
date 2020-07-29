@@ -152,6 +152,7 @@ nav {
   justify-content: space-between;
 }
 .nav-links a {
+  color: #FFA07A;
   text-decoration: none;
   font-weight: bold;
   margin-right: 8px;
@@ -252,12 +253,14 @@ input.upload {
   justify-content: center;
 }
 .auctionCard {
-  background: #8cdff8;
+  background-color: #E9EFF7;
+  background-image: linear-gradient(0deg, #b5bac0 25%, #27e6f0b4 100%);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.22), 0 8px 12px rgba(0, 0, 0, 0.24);
   width: 100%;
   min-width: 250px;
   max-width: 250px;
-  min-height: 400px;
+  min-height: 380px;
+  max-height: 380px;
   padding: 8px;
   margin: 12px 8px auto;
   text-align: left;
@@ -269,4 +272,9 @@ img {
 .sub {
   padding: 0px 0px 20px 0px;
   letter-spacing: 1.1px;
+}
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

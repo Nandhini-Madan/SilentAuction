@@ -10,7 +10,7 @@ function AuctionCard(props) {
                     <div className='sub'>
                         {auction.itemName}
                     </div>
-                    <div>
+                    <div className="image">
                        <img src={auction.imageUrl} alt=''/>
                     </div>
                     <div className='sub'>
