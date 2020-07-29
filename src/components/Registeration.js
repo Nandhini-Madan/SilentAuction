@@ -7,7 +7,7 @@ const Registeration = props => {
     const defaultState = {
         firstName: "",
         lastName: "",
-        userName: "",
+        username: "",
         email: "",
         password: "",
         retype_password: "",
@@ -19,7 +19,7 @@ const Registeration = props => {
         type: yup.string().notRequired(),
         firstName: yup.string().required("Please Enter Your first Name").min(2, "This is not your real name"),
         lastName: yup.string().required("please enter LAstname"),
-        userName: yup.string().required("Please Enter Your Name").min(8, "This is not your real name"),
+        username: yup.string().required("Please Enter Your Name").min(8, "This is not your real name"),
         email:yup.string().email().required("Please Enter email"),
         password: yup.string().required("Please enter a password").matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
@@ -126,9 +126,9 @@ const Registeration = props => {
                 />
                 <Input
                     type="text"
-                    name="userName"
+                    name="username"
                     onChange={inputChange}
-                    value={FormState.userName}
+                    value={FormState.username}
                     label=" User Name"
                     errors={Error}
                 />
