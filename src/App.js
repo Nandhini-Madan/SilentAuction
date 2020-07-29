@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import { AuctionsProvider } from './components/AuctionsContext';
 import AuctionGallery from './components/AuctionGallery';
 import DisplayAuctionItem from './components/DisplayAuctionItem';
+import ModifyAuctionItems from './components/ModifyAuctionItems';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Header />
         <Route exact path='/auctions' component={AuctionGallery} />
         <Route path='/auctions/:itemID' component={DisplayAuctionItem} />
+        <Route path='/auctions/modify/:itemID' component={ModifyAuctionItems} />
 
         <Switch>
           <Route path="/login">
