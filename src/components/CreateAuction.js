@@ -9,7 +9,8 @@ function CreateAuction(props) {
     const defaultState = {
         itemName: "",
         description: "",
-        startingPrice: ""
+        startingPrice: "", 
+        imageUrl: ""
     };
 
     const [formState, setFormState] = useState(defaultState);
@@ -102,7 +103,7 @@ function CreateAuction(props) {
                     label="Starting Price"
                     errors={errors}
                     />
-                <UploadImage/>
+                <UploadImage formState={formState} setFormState={setFormState}/>
                 <button disabled={buttonDisabled}>Create Auction</button>
             </form>
             <AuctionCard auctions={auctions} />

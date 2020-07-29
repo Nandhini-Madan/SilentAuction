@@ -20,8 +20,9 @@ function UploadImage(props) {
             }
         )
         const file = await res.json()
-        //console.log(file);
+        // console.log(file);
         setImage(file.secure_url)
+        props.setFormState({...props.formState, imageUrl: file.secure_url})
         setLoading(false)
         //console.log(data.values())
     }
@@ -43,7 +44,7 @@ function UploadImage(props) {
             {loading ? (
                 <h3 className="imageContainer">Loading</h3>
             ) : (
-                    <img src={image} style={{ width: '300px' }} alt="" />
+                    <img src={image} style={{ width: '100px' }} alt="" />
                 )}
         </div>
     );
