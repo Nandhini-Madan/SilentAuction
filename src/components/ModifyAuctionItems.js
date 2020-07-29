@@ -15,17 +15,25 @@ const ModifyAuctionItems = () => {
         }, [itemsArray, params.itemID]
     )
 
+    const updateName = event => {
+        setAuctionItem({
+            ...auctionItem,
+            [event.target.name]: event.target.value
+        });
+    }
+
     return(
         <Section>
             {auctionItem && 
                 <section className='item-container'>
                     <div className='name'>Modify Auction Item #{params.itemID}</div>
                     <img src={auctionItem.avatar} alt={auctionItem.email}></img>
-                    <section className='detail-container'>
+                    <form className='detail-container'>
+                        <input type='text' name='first_name' placeholder='Name' value={auctionItem.first_name} onChange={updateName}/>
                         <div className='details'><b>Description:</b></div>
                         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                         <div className='details'><b>Starting Price:</b> {auctionItem.email}</div>
-                    </section>
+                    </form>
                 </section>
             }
         </Section>
