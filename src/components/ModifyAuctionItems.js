@@ -2,10 +2,11 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AuctionsContext } from './AuctionsContext';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const ModifyAuctionItems = () => {
     const [itemsArray] = useContext(AuctionsContext);
-    const [auctionItem, setAuctionItem] = useState({first_name: ''});
+    const [auctionItem, setAuctionItem] = useState({first_name: '', avatar: '', email: ''});
     const params = useParams();
 
     // find item in Context using item ID from params. set to local state.
@@ -36,19 +37,30 @@ const ModifyAuctionItems = () => {
         });
     }
 
+    const submitItem = event => {
+        event.preventDefault();
+        console.log('itemsArray: ', itemsArray[params.itemID-1]);
+        console.log('auctionItem: ', auctionItem);
+        axios
+            .put(`https://reqres.in/api/users/${Number(params.itemID-1)}`, {name: auctionItem.first_name, job: auctionItem.avatar})
+            .then(response => console.log('submitItem: ', response))
+            .catch(error => console.log('submitItem: ', error));
+    }
+
     return(
         <Section>
             {auctionItem && 
                 <section className='item-container'>
                     <div className='name'>Modify Auction Item #{params.itemID}</div>
                     <img src={auctionItem.avatar} alt={auctionItem.email}></img>
-                    <form className='detail-container'>
+                    <form className='detail-container' onSubmit={submitItem}>
                         <div className='details'><b>Name:</b></div>
                         <input type='text' name='first_name' placeholder='Name' value={auctionItem.first_name} onChange={updateName}/>
                         <div className='details'><b>Description:</b></div>
                         <input type='textbox' name='avatar' placeholder='Description' value={auctionItem.avatar} onChange={updateAvatar}/>
                         <div className='details'><b>Starting Price:</b></div>
                         <input type='text' name='email' placeholder='Starting price' value={auctionItem.email} onChange={updateEmail}/>
+                        <button>Submit</button>
                     </form>
                 </section>
             }
