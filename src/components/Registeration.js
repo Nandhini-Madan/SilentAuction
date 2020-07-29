@@ -89,7 +89,7 @@ const Registeration = props => {
             </div>
                 <Input
                     type="text"
-                    name="firstName"
+                    name="username"
                     onChange={inputChange}
                     value={FormState.firstName}
                     label="First Name"
