@@ -5,47 +5,60 @@ import * as yup from "yup";
 const Registeration = props => {
     //Initial state
     const defaultState = {
-        Name: "",
-        Email: "",
-        Password: "",
+        firstName: "",
+        lastName: "",
+        userName: "",
+        email: "",
+        password: "",
         Retype_Password: "",
-        UserType: "seller",
-        Terms: false
+        type: "seller",
+        terms: false
     }
     // Form Schema 
     const FormSchema = yup.object().shape({
-        UserType: yup.string().notRequired(),
-        Name: yup.string().required("Please Enter Your Name").min(2, "This is not your real name"),
-        Email: yup.string().email().required("Please Enter email"),
-        Password: yup.string().required("Please enter a password") .matches(
+        type: yup.string().notRequired(),
+        firstName: yup.string().required("Please Enter Your first Name").min(2, "This is not your real name"),
+        lastName: yup.string().required("please enter LAstname"),
+        userName: yup.string().required("Please Enter Your Name").min(8, "This is not your real name"),
+        email: yup.string().email().required("Please Enter email"),
+        password: yup.string().required("Please enter a password").matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-            "Password must contain at least 8 characters, one uppercase, one number and one special case character"
-          ),
+            "Password must contain at least 8 characters, one uppercase, one lowercase,one number and one special case character"
+        ),
         Retype_Password: yup
             .string()
             .required("Please confirm your password")
-            .when("Password", {
-                is: Password => (Password && Password.length > 0 ? true : false),
-                then: yup.string().oneOf([yup.ref("Password")], "Password doesn't match")
+            .when("password", {
+                is: password => (password && password.length > 0 ? true : false),
+                then: yup.string().oneOf([yup.ref("password")], "Password doesn't match")
             }),
-        Terms: yup.boolean().oneOf([true], 'please accept out terms')
+        terms: yup.boolean().oneOf([true], 'please accept out terms')
     })
     const [FormState, SetFormState] = useState(defaultState);
-    const [Error, Seterror] = useState({ ...defaultState });
+    const [Error, Seterror] = useState({ ...defaultState, terms: "" });
     const [Disablebutton, SetDisablebutton] = useState(true);
-    //Validation
-    // const validate=(event)=>{
-    //   event.persist();
-    //   yup
-    //   .reach(FormSchema,event.target.name)
-    //   .validate(event.target.value)
-    //   .then(valid=> { Seterror({...Error,[event.target.name]:""})})
-    //   .catch(err=> { Seterror({...Error,[event.target.name]:err.Error[0]})})
+
 
     const inputChange = event => {
-        event.persist();
-        const value = event.target.value;
        
+        if (event.target.type === 'checkbox') {
+
+            console.log("checkbox",event.target.checked);
+            SetFormState({
+                ...FormState, [event.target.name]: event.target.checked
+
+            })
+        } else {
+            SetFormState({
+                ...FormState,
+                [event.target.name]: event.target.value
+            })
+        }
+            
+        const value = event.target.type==="checkbox" ? event.target.checked : event.target.value;
+       
+        event.persist();
+
         yup.reach(FormSchema, event.target.name)
             .validate(value)
             .then(
@@ -62,21 +75,33 @@ const Registeration = props => {
                 }
 
             )
-            
+        //      const handleChange = e => {
 
-        SetFormState({
-            ...FormState,
-            [event.target.name]: event.target.value
-        })
 
-        console.log(FormState);
+
+        //  }
+
+        console.log("Previous State", FormState);
     }
     useEffect(() => {
         FormSchema.isValid(FormState)
             .then(valid =>
+            //       console.log("useeffect valid",valid)
+            //   SetDisablebutton(!valid));
+            {
+                if (FormState.terms && FormState.userName && FormState.firstName && FormState.lastName && FormState.password && FormState.Retype_Password) {
 
-                SetDisablebutton(!valid));
+                    SetDisablebutton(false);
+                }
+                else if (!FormState.terms || FormState.userName || FormState.firstName || FormState.lastName || FormState.password || FormState.Retype_Password) {
+                    SetDisablebutton(true);
+                }
+            }
+            )
+
     }, [FormState, FormSchema])
+
+    console.log("After", FormState);
 
     const SubmitForm = event => {
         event.preventDefault();
@@ -91,33 +116,48 @@ const Registeration = props => {
 
                 <div className="RadioContainer">
                     <label>Seller</label>
-                    <input defaultChecked="Seller" type='radio' name='UserType' onChange={inputChange} data-cy='Seller' value='Seller' />
+                    <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='Seller' />
 
                     <label> Bidder</label>
-                    <input type='radio' name='UserType' onChange={inputChange} data-cy='Bidder' value='Bidder' />
+                    <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='Bidder' />
                 </div>
-
                 <Input
                     type="text"
-                    name="Name"
+                    name="firstName"
                     onChange={inputChange}
-                    value={FormState.Name}
-                    label="Name"
+                    value={FormState.firstName}
+                    label="First Name"
+                    errors={Error}
+                />
+                <Input
+                    type="text"
+                    name="lastName"
+                    onChange={inputChange}
+                    value={FormState.lastName}
+                    label="Last Name"
+                    errors={Error}
+                />
+                <Input
+                    type="text"
+                    name="userName"
+                    onChange={inputChange}
+                    value={FormState.userName}
+                    label=" User Name"
                     errors={Error}
                 />
                 <Input
                     type="Email"
-                    name="Email"
+                    name="email"
                     onChange={inputChange}
-                    value={FormState.Email}
+                    value={FormState.email}
                     label="Email"
                     errors={Error}
                 />
                 <Input
                     type="Password"
-                    name="Password"
+                    name="password"
                     onChange={inputChange}
-                    value={FormState.Password}
+                    value={FormState.password}
                     label="Password"
                     errors={Error}
                 />
@@ -130,8 +170,8 @@ const Registeration = props => {
                     errors={Error}
                 />
                 <div className="TermsContainer">
-                <input type="checkbox" name="Terms" onChange={inputChange} value={true} errors={Error} />
-                <label>Please Accept our Terms and conditions</label>
+                    <input type="checkbox" name="terms" onChange={inputChange} checked={FormState.terms} errors={Error} />
+                    <label>Please Accept our Terms and conditions</label>
                 </div>
                 <button disabled={Disablebutton}>Submit</button>
             </form>
