@@ -25,7 +25,7 @@ const Registeration = props => {
             .string()
             .required("Please confirm your password")
             .when("Password", {
-                is: password => (password && password.length > 0 ? true : false),
+                is: password => (FormState.password === FormState.password ? true : false),
                 then: yup.string().oneOf([yup.ref("Password")], "Password doesn't match")
             }),
         Terms: yup.boolean().oneOf([true], 'please accept out terms')
@@ -125,7 +125,7 @@ const Registeration = props => {
                     type="password"
                     name="retype_password"
                     onChange={inputChange}
-                    value={FormState.Retype_Password}
+                    value={FormState.retype_password}
                     label="Retype Password"
                     errors={Error}
                 />
