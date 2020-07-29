@@ -3,6 +3,8 @@ import { AuctionsContext } from './AuctionsContext';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Bid from "../components/Bid";
+
 const DisplayAuctionItem = () => {
     const [itemsArray] = useContext(AuctionsContext);
     const params = useParams();
@@ -23,6 +25,7 @@ const DisplayAuctionItem = () => {
                     <img src={auctionItem.avatar} alt={auctionItem.email}></img>
                     <div>Description: {auctionItem.first_name} {auctionItem.last_name}</div>
                     <div>Starting Price: {auctionItem.email}</div>
+                    <Bid />
                 </section>
             }
         </Section>
