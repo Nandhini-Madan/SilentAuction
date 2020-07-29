@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const ModifyAuctionItems = () => {
     const [itemsArray] = useContext(AuctionsContext);
-    const [auctionItem, setAuctionItem] = useState({});
+    const [auctionItem, setAuctionItem] = useState({first_name: ''});
     const params = useParams();
 
     // find item in Context using item ID from params. set to local state.
@@ -22,6 +22,20 @@ const ModifyAuctionItems = () => {
         });
     }
 
+    const updateAvatar = event => {
+        setAuctionItem({
+            ...auctionItem,
+            [event.target.name]: event.target.value
+        });
+    }
+
+    const updateEmail = event => {
+        setAuctionItem({
+            ...auctionItem,
+            [event.target.name]: event.target.value
+        });
+    }
+
     return(
         <Section>
             {auctionItem && 
@@ -29,10 +43,12 @@ const ModifyAuctionItems = () => {
                     <div className='name'>Modify Auction Item #{params.itemID}</div>
                     <img src={auctionItem.avatar} alt={auctionItem.email}></img>
                     <form className='detail-container'>
+                        <div className='details'><b>Name:</b></div>
                         <input type='text' name='first_name' placeholder='Name' value={auctionItem.first_name} onChange={updateName}/>
                         <div className='details'><b>Description:</b></div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                        <div className='details'><b>Starting Price:</b> {auctionItem.email}</div>
+                        <input type='textbox' name='avatar' placeholder='Description' value={auctionItem.avatar} onChange={updateAvatar}/>
+                        <div className='details'><b>Starting Price:</b></div>
+                        <input type='text' name='email' placeholder='Starting price' value={auctionItem.email} onChange={updateEmail}/>
                     </form>
                 </section>
             }
