@@ -164,13 +164,13 @@ nav {
   display: flex;
   align-items: center;
 }
-.RadioContainer{
-    display: flex;
-    flex-direction: row;
+.RadioContainer {
+  display: flex;
+  flex-direction: row;
 }
-.TermsContainer{
-    display: flex;
-    flex-direction: row;
+.TermsContainer {
+  display: flex;
+  flex-direction: row;
 }
 form {
   display: flex;
@@ -232,4 +232,18 @@ button:disabled {
   background-image: none;
   background-color: rgba(255, 255, 255, 0.534);
   cursor: not-allowed;
+}
+.bid {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #4e4e52;
+  padding: 5px;
+  color: white;
+  box-shadow: 2px 2px grey;
+  height: 15px;
+  width: 100px;
+  border: 2px solid orange;
+  cursor: pointer;
 }
