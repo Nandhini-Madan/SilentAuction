@@ -5,32 +5,28 @@ import * as yup from "yup";
 const Registeration = props => {
     //Initial state
     const defaultState = {
-        firstName: "",
-        lastName: "",
-        email: "",
         username: "",
+        email: "",
         password: "",
         retype_password: "",
-        type: "seller",
-        //terms: false
+        UserType: "seller",
+        Terms: false
     }
     // Form Schema 
     const FormSchema = yup.object().shape({
-        type: yup.string().notRequired(),
-        firstName: yup.string().required("Please Enter Your first Name").min(2, "This is not your real name"),
-        lastName: yup.string().required("please enter LAstname"),
-        username: yup.string().required("Please Enter Your Name").min(8, "This is not your real name"),
+        UserType: yup.string().notRequired(),
+        username: yup.string().required("Please Enter Your Name").min(2, "This is not your real name"),
         email: yup.string().email().required("Please Enter email"),
         password: yup.string().required("Please enter a password").matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-            "Password must contain at least 8 characters, one uppercase, one lowercase,one number and one special case character"
-        ),
+            "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+          ),
         retype_password: yup
             .string()
             .required("Please confirm your password")
-            .when("password", {
-                is: password => (FormState.password === FormState.retype_password ? true : false),
-                then: yup.string().oneOf([yup.ref("password")], "Password doesn't match")
+            .when("Password", {
+                is: password => (FormState.password === FormState.password ? true : false),
+                then: yup.string().oneOf([yup.ref("Password")], "Password doesn't match")
             }),
         terms: yup.boolean().oneOf([true], 'please accept out terms')
     })
@@ -101,7 +97,7 @@ const Registeration = props => {
                 />
                 <Input
                     type="text"
-                    name="lastName"
+                    name="username"
                     onChange={inputChange}
                     value={FormState.lastName}
                     label="Last Name"
@@ -116,7 +112,7 @@ const Registeration = props => {
                     errors={Error}
                 />
                 <Input
-                    type="Email"
+                    type="email"
                     name="email"
                     onChange={inputChange}
                     value={FormState.email}
@@ -132,7 +128,7 @@ const Registeration = props => {
                     errors={Error}
                 />
                 <Input
-                    type="Password"
+                    type="password"
                     name="retype_password"
                     onChange={inputChange}
                     value={FormState.retype_password}

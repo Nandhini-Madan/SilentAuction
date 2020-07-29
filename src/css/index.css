@@ -132,7 +132,7 @@ html {
 .container {
   font-size: 2rem;
   color: #1B1B3A;
-  background-image: linear-gradient(#a59e69, #57897b);
+  background-image: linear-gradient(0deg, #41D5DC 0%, #E9EFF7 100%);
   min-height: 100vh;
 }
 nav {
@@ -152,6 +152,7 @@ nav {
   justify-content: space-between;
 }
 .nav-links a {
+  color: #FFA07A;
   text-decoration: none;
   font-weight: bold;
   margin-right: 8px;
@@ -233,6 +234,10 @@ button:disabled {
   background-color: rgba(255, 255, 255, 0.534);
   cursor: not-allowed;
 }
+input.upload {
+  background: transparent;
+  border: none;
+}
 .bid {
   display: flex;
   justify-content: space-evenly;
@@ -246,4 +251,44 @@ button:disabled {
   width: 100px;
   border: 2px solid orange;
   cursor: pointer;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+.auctionContainer {
+  margin: 10px 0px;
+  padding: 10px 0px;
+  text-align: center;
+}
+.auctionList {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
+.auctionCard {
+  background-color: #E9EFF7;
+  background-image: linear-gradient(0deg, #b5bac0 25%, #27e6f0b4 100%);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.22), 0 8px 12px rgba(0, 0, 0, 0.24);
+  width: 100%;
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 380px;
+  max-height: 380px;
+  padding: 8px;
+  margin: 12px 8px auto;
+  text-align: left;
+  border-radius: 10px;
+}
+img {
+  width: 200px;
+}
+.sub {
+  padding: 0px 0px 20px 0px;
+  letter-spacing: 1.1px;
+}
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
