@@ -16,7 +16,7 @@ const AuctionGallery = () => {
                 itemsArray.map(item => (
                     // "to" string literal populates first param. It dynamically
                     // modifies URL, which useParam reads in DisplayAuctionItem.
-                    <Link to={`/item/${item.id}`} key={item.id}>
+                    <Link to={`/auctions/${item.id}`} key={item.id}>
                         <div className='item-container'>
                             <img src={item.avatar} alt={item.email}></img>
                             <p className='title'>{item.email}</p>
@@ -37,7 +37,7 @@ const Section = styled.section`
     .item-container {
         // border: 1px solid orange;
         margin: .5rem;
-        width: 15rem;
+        width: 25rem;
         diplay: flex;
         flex-direction: column;
         position: relative;
@@ -62,6 +62,8 @@ const Section = styled.section`
             top: 75%;
             left: 50%;
             transform: translate(-50%, -50%);
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 1.25rem;
         }
     }
 `

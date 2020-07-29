@@ -5,48 +5,38 @@ import * as yup from "yup";
 const Registeration = props => {
     //Initial state
     const defaultState = {
-        firstName: "",
-        lastName: "",
-        userName: "",
+        username: "",
         email: "",
         password: "",
         retype_password: "",
-        type: "seller",
-        terms: false
+        UserType: "seller",
+        Terms: false
     }
     // Form Schema 
     const FormSchema = yup.object().shape({
-        type: yup.string().notRequired(),
-        firstName: yup.string().required("Please Enter Your first Name").min(2, "This is not your real name"),
-        lastName: yup.string().required("please enter LAstname"),
-        userName: yup.string().required("Please Enter Your Name").min(8, "This is not your real name"),
-        email:yup.string().email().required("Please Enter email"),
+        UserType: yup.string().notRequired(),
+        username: yup.string().required("Please Enter Your Name").min(2, "This is not your real name"),
+        email: yup.string().email().required("Please Enter email"),
         password: yup.string().required("Please enter a password").matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-            "Password must contain at least 8 characters, one uppercase, one lowercase,one number and one special case character"
-        ),
-        retype_password:yup
-                    .string()
-                    .required("Please confirm your password")
-                    .when("password", {
-                        is: password => (FormState.password===FormState.retype_password ? true : false),
-                        then: yup.string().oneOf([yup.ref("password")],"Password doesn't match")
-                    }),
+            "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+          ),
+        retype_password: yup
+            .string()
+            .required("Please confirm your password")
+            .when("Password", {
+                is: password => (FormState.password === FormState.password ? true : false),
+                then: yup.string().oneOf([yup.ref("Password")], "Password doesn't match")
+            }),
         terms: yup.boolean().oneOf([true], 'please accept out terms')
     })
     const [FormState, SetFormState] = useState(defaultState);
     const [Error, Seterror] = useState({ ...defaultState, terms: "" });
-    const [Disablebutton, SetDisablebutton] = useState(true);
-
-
-    const inputChange = event => {
-       
+    const [Disablebutton, SetDisablebutton] = useState(true); const inputChange = event => {
         if (event.target.type === 'checkbox') {
-
-            console.log("checkbox",event.target.checked);
+            console.log("checkbox", event.target.checked);
             SetFormState({
                 ...FormState, [event.target.name]: event.target.checked
-
             })
         } else {
             SetFormState({
@@ -64,9 +54,7 @@ const Registeration = props => {
             .then(
                 valid => {
                     Seterror({ ...Error, [event.target.name]: "" })
-                }
-
-            )
+                })
             .catch(
                 err => {
                     console.log("Previous", err.errors[0]);
@@ -89,38 +77,30 @@ const Registeration = props => {
             //       console.log("useeffect valid",valid)
             //   SetDisablebutton(!valid));
             {
-                if (FormState.terms && FormState.userName && FormState.firstName && FormState.lastName && FormState.password && FormState.retype_password) {
-
+                if (FormState.username && FormState.firstName && FormState.lastName && FormState.password ) {
                     SetDisablebutton(false);
                 }
-                else if (!FormState.terms || FormState.userName || FormState.firstName || FormState.lastName || FormState.password || FormState.retype_password) {
+                else if (FormState.username || FormState.firstName || FormState.lastName || FormState.password ) {
                     SetDisablebutton(true);
                 }
             }
             )
-
-    }, [FormState, FormSchema])
-
-    console.log("After", FormState);
-
-    const SubmitForm = event => {
+    }, [FormState, FormSchema]) 
+       console.log("After", FormState); const SubmitForm = event => {
         event.preventDefault();
         console.log("Formdata", FormState);
-        axios.post("https://reqres.in/api/users", FormState)
+        axios.post("https://silent-auction-kb.herokuapp.com/api/auth/register", FormState)
             .then(() => console.log('Form Submitted'))
             .catch(err => console.log('There was a error in form', err));
     }
     return (
         <div className="formContainer">
-            <form onSubmit={SubmitForm}>
-
-                <div className="RadioContainer">
-                    <label>Seller</label>
-                    <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='Seller' />
-
-                    <label> Bidder</label>
-                    <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='Bidder' />
-                </div>
+            <form onSubmit={SubmitForm}>                <div className="RadioContainer">
+                <label>Seller</label>
+                <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='Seller' />  
+                                  <label> Bidder</label>
+                <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='Bidder' />
+            </div>
                 <Input
                     type="text"
                     name="firstName"
@@ -131,7 +111,7 @@ const Registeration = props => {
                 />
                 <Input
                     type="text"
-                    name="lastName"
+                    name="username"
                     onChange={inputChange}
                     value={FormState.lastName}
                     label="Last Name"
@@ -139,14 +119,14 @@ const Registeration = props => {
                 />
                 <Input
                     type="text"
-                    name="userName"
+                    name="username"
                     onChange={inputChange}
-                    value={FormState.userName}
+                    value={FormState.username}
                     label=" User Name"
                     errors={Error}
                 />
                 <Input
-                    type="Email"
+                    type="email"
                     name="email"
                     onChange={inputChange}
                     value={FormState.email}
@@ -154,15 +134,15 @@ const Registeration = props => {
                     errors={Error}
                 />
                 <Input
-                    type="text"
+                    type="password"
                     name="password"
                     onChange={inputChange}
                     value={FormState.password}
-                    label="Password"
+                    label="password"
                     errors={Error}
                 />
                 <Input
-                    type="text"
+                    type="password"
                     name="retype_password"
                     onChange={inputChange}
                     value={FormState.retype_password}
