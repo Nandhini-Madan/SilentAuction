@@ -14,10 +14,10 @@ function AuctionCard(props) {
                        <img src={auction.imageUrl} alt=''/>
                     </div>
                     <div className='sub'>
-                        {auction.description}
+                        Description:  {auction.description}
                     </div>
                     <div className='sub'>
-                        {auction.startingPrice}
+                        Starting Price: {auction.startingPrice}
                     </div>
                 </div>
             ))}
