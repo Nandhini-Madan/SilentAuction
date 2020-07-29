@@ -3,7 +3,16 @@ import axios from 'axios';
 import * as yup from 'yup';
 import Input from './Input';
 
+// react 2
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useHistory } from "react-router-dom";
+
 function Login(props) {
+
+    //** REACT 2 */
+    let history = useHistory();
+    //*** END REACT 2 */
+    
     const defaultState = {
         username: "",
         password: ""
@@ -50,11 +59,19 @@ function Login(props) {
     const loginSubmit = e => {
         e.preventDefault();
         console.log("login submitted");
-        axios
-            .post('', loginState)
-            .then(() => console.log('login success'))
-            .catch(err => console.log('There was a login error: ', err));
-    };
+
+        //**REACT 2 built and imported axios authentication. */
+        axiosWithAuth().post('auth/login', loginState)
+        .then(res => {
+          console.log(res);
+          localStorage.setItem('token', res.data.payload);
+          history.push("/");
+        })
+        .catch(err => {
+            console.log("invalid login.", err);
+        })
+        //** END REACT 2 */
+    }
 
     //onChange function, put validation within function
     const inputChange = e => {
@@ -77,7 +94,7 @@ function Login(props) {
         //spread accross loginState and set to value of input. 
         setLoginState({
             ...loginState,
-            [e.target.name]: value
+            [e.target.name]: e.target.value
         });
         console.log(loginState);
         // validateChange(e);

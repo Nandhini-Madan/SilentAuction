@@ -28,88 +28,94 @@ const Registeration = props => {
                 is: password => (FormState.password === FormState.password ? true : false),
                 then: yup.string().oneOf([yup.ref("Password")], "Password doesn't match")
             }),
-        Terms: yup.boolean().oneOf([true], 'please accept out terms')
+        terms: yup.boolean().oneOf([true], 'please accept out terms')
     })
     const [FormState, SetFormState] = useState(defaultState);
-    const [Error, Seterror] = useState({ ...defaultState });
-    const [Disablebutton, SetDisablebutton] = useState(true);
-    //Validation
-    // const validate=(event)=>{
-    //   event.persist();
-    //   yup
-    //   .reach(FormSchema,event.target.name)
-    //   .validate(event.target.value)
-    //   .then(valid=> { Seterror({...Error,[event.target.name]:""})})
-    //   .catch(err=> { Seterror({...Error,[event.target.name]:err.Error[0]})})
-
-    const inputChange = event => {
-        event.persist();
-        const value = event.target.value;
-       
-        yup.reach(FormSchema, event.target.name)
+    const [Error, Seterror] = useState({ ...defaultState, terms: "" });
+    const [Disablebutton, SetDisablebutton] = useState(true); const inputChange = event => {
+        if (event.target.type === 'checkbox') {
+            console.log("checkbox", event.target.checked);
+            SetFormState({
+                ...FormState, [event.target.name]: event.target.checked
+            })
+        } else {
+            SetFormState({
+                ...FormState,
+                [event.target.name]: event.target.value
+            })
+        } const value = event.target.type === "checkbox" ? event.target.checked : event.target.value; event.persist(); yup.reach(FormSchema, event.target.name)
             .validate(value)
             .then(
                 valid => {
                     Seterror({ ...Error, [event.target.name]: "" })
-                }
-
-            )
+                })
             .catch(
                 err => {
                     console.log("Previous", err.errors[0]);
                     //  console.log("Error",err.Error);
                     Seterror({ ...Error, [event.target.name]: err.errors[0] })
-                }
-
-            )
-            
-
-        SetFormState({
-            ...FormState,
-            [event.target.name]: event.target.value
-        })
-
-        console.log(FormState);
+                })
+        //      const handleChange = e => {        //  }        console.log("Previous State", FormState);
     }
     useEffect(() => {
         FormSchema.isValid(FormState)
             .then(valid =>
-
-                SetDisablebutton(!valid));
-    }, [FormState, FormSchema])
-
-    const SubmitForm = event => {
+            //       console.log("useeffect valid",valid)
+            //   SetDisablebutton(!valid));
+            {
+                if (FormState.username && FormState.firstName && FormState.lastName && FormState.password ) {
+                    SetDisablebutton(false);
+                }
+                else if (FormState.username || FormState.firstName || FormState.lastName || FormState.password ) {
+                    SetDisablebutton(true);
+                }
+            }
+            )
+    }, [FormState, FormSchema]) 
+       console.log("After", FormState); const SubmitForm = event => {
         event.preventDefault();
         console.log("Formdata", FormState);
-        axios.post("https://reqres.in/api/users", FormState)
+        axios.post("https://silent-auction-kb.herokuapp.com/api/auth/register", FormState)
             .then(() => console.log('Form Submitted'))
             .catch(err => console.log('There was a error in form', err));
     }
     return (
         <div className="formContainer">
-            <form onSubmit={SubmitForm}>
-
-                <div className="RadioContainer">
-                    <label>Seller</label>
-                    <input defaultChecked="Seller" type='radio' name='UserType' onChange={inputChange} data-cy='Seller' value='Seller' />
-
-                    <label> Bidder</label>
-                    <input type='radio' name='UserType' onChange={inputChange} data-cy='Bidder' value='Bidder' />
-                </div>
-
+            <form onSubmit={SubmitForm}>                <div className="RadioContainer">
+                <label>Seller</label>
+                <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='Seller' />  
+                                  <label> Bidder</label>
+                <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='Bidder' />
+            </div>
+                <Input
+                    type="text"
+                    name="firstName"
+                    onChange={inputChange}
+                    value={FormState.firstName}
+                    label="First Name"
+                    errors={Error}
+                />
                 <Input
                     type="text"
                     name="username"
                     onChange={inputChange}
-                    value={FormState.Name}
-                    label="Name"
+                    value={FormState.lastName}
+                    label="Last Name"
+                    errors={Error}
+                />
+                <Input
+                    type="text"
+                    name="username"
+                    onChange={inputChange}
+                    value={FormState.username}
+                    label=" User Name"
                     errors={Error}
                 />
                 <Input
                     type="email"
                     name="email"
                     onChange={inputChange}
-                    value={FormState.Email}
+                    value={FormState.email}
                     label="Email"
                     errors={Error}
                 />
@@ -117,8 +123,8 @@ const Registeration = props => {
                     type="password"
                     name="password"
                     onChange={inputChange}
-                    value={FormState.Password}
-                    label="Password"
+                    value={FormState.password}
+                    label="password"
                     errors={Error}
                 />
                 <Input
@@ -129,10 +135,10 @@ const Registeration = props => {
                     label="Retype Password"
                     errors={Error}
                 />
-                <div className="TermsContainer">
-                <input type="checkbox" name="Terms" onChange={inputChange} value={true} errors={Error} />
-                <label>Please Accept our Terms and conditions</label>
-                </div>
+                {/*<div className="TermsContainer">
+                    <input type="checkbox" name="terms" onChange={inputChange} checked={FormState.terms} errors={Error} />
+                    <label>Please Accept our Terms and conditions</label>
+            </div>*/}
                 <button disabled={Disablebutton}>Submit</button>
             </form>
         </div>
