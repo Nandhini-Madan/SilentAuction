@@ -100,7 +100,7 @@ const Registeration = props => {
     const SubmitForm = event => {
         event.preventDefault();
         console.log("Formdata", FormState);
-        axios.post("https://silent-auction-kb.herokuapp.com/api/auth/register", FormState)
+        axios.post("https://silent-auction-kb.herokuapp.com/api/auth/register", FormState, {withCredentials: true})
         .then(res => {
             console.log(res);
             history.push("/login");
@@ -116,10 +116,10 @@ const Registeration = props => {
 
                 <div className="RadioContainer">
                     <label>Seller</label>
-                    <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='Seller' />
+                    <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='seller' />
 
                     <label> Bidder</label>
-                    <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='Bidder' />
+                    <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='bidder' />
                 </div>
                 <Input
                     type="text"
