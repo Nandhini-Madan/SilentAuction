@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import axios from "axios";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
+
+
 const Registeration = props => {
+    //** REACT 2 */
+    let history = useHistory();
+    //*** END REACT 2 */
+
     //Initial state
     const defaultState = {
         firstName: "",
@@ -93,20 +100,26 @@ const Registeration = props => {
     const SubmitForm = event => {
         event.preventDefault();
         console.log("Formdata", FormState);
-        axios.post("https://reqres.in/api/users", FormState)
-            .then(() => console.log('Form Submitted'))
-            .catch(err => console.log('There was a error in form', err));
+        axios.post("https://silent-auction-kb.herokuapp.com/api/auth/register", FormState, {withCredentials: true})
+        .then(res => {
+            console.log(res);
+            history.push("/login");
+          })
+          .catch(err => {
+              console.log("invalid login.", err);
+          })    
     }
+
     return (
         <div className="formContainer">
             <form onSubmit={SubmitForm}>
 
                 <div className="RadioContainer">
                     <label>Seller</label>
-                    <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='Seller' />
+                    <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='seller' />
 
                     <label> Bidder</label>
-                    <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='Bidder' />
+                    <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='bidder' />
                 </div>
                 <Input
                     type="text"
