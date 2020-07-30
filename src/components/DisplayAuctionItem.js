@@ -7,10 +7,12 @@ import axios from 'axios';
 
 import Bid from "../components/Bid";
 
+
 const DisplayAuctionItem = () => {
     const [itemsArray] = useContext(AuctionsContext);
     const params = useParams();
     const [auctionItem, setAuctionItem] = useState({});
+    const [placeBid, setPlaceBid] = useState(false);
 
     // find item in Context using item ID from params. set to local state.
     useEffect(
@@ -31,6 +33,19 @@ const DisplayAuctionItem = () => {
             .catch(error => console.log('DELETE Error: ', error));
     }
 
+    const placeYourBid = () =>{
+        setPlaceBid(true);
+    }
+
+    // const testBE = event => {
+    //     event.preventDefault();
+    //     axios
+    //         .get('https://silent-auction-kb.herokuapp.com/api/items')
+    //         .then(response => {
+    //             console.log('Back End: ', response);
+    //         })
+    //         .catch(error => console.log('Back End Error: ', error));
+    // }
     const testBE = event => {
         event.preventDefault();
         console.log('testing back end');
@@ -54,13 +69,19 @@ const DisplayAuctionItem = () => {
                         <div className='details'><b>Starting Price:</b> {auctionItem.email}</div>
                     </section>
                     <div className='button-holder'>
-                        <Link to={`/auctions`}><button onClick={testBE}>Place Bid</button></Link>
+                        <button onClick={placeYourBid}>Place Bid</button>
                         <Link to={`/auctions/modify/${params.itemID}`}><button>Modify Auction</button></Link>
                         <Link to={`/auctions`}><button onClick={deleteItem}>Delete Auction</button></Link>
+                        
+                        {placeBid ? <div>
+                        <Bid auctionId={params.itemID} setPlaceBid={setPlaceBid}/>
+                        </div>
+                         :""}
+                        
                     </div>
                     <div>Description: {auctionItem.first_name} {auctionItem.last_name}</div>
                     <div>Starting Price: {auctionItem.email}</div>
-                    <Bid />
+                    
                 </section>
             }
         </Section>

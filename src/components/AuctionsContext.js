@@ -11,9 +11,9 @@ export const AuctionsProvider = (props) => {
     // function to get auction items for gallery display
     const getItems = () => {
         axios
-            .get('https://reqres.in/api/users')
+            .get('https://silent-auction-kb.herokuapp.com/api/items')
             .then(response => {
-                // console.log('axios in context: ', response.data.data);
+                console.log('axios in context: ', response.data.data);
                 setItemsArray(response.data.data);
             })
             .catch(error => {
