@@ -9,7 +9,7 @@ const Registeration = props => {
     //** REACT 2 */
     let history = useHistory();
     //*** END REACT 2 */
-    
+
     //Initial state
     const defaultState = {
         firstName: "",
@@ -115,10 +115,10 @@ const Registeration = props => {
 
                 <div className="RadioContainer">
                     <label>Seller</label>
-                    <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='Seller' />
+                    <input defaultChecked="Seller" type='radio' name='type' onChange={inputChange} data-cy='Seller' value='seller' />
 
                     <label> Bidder</label>
-                    <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='Bidder' />
+                    <input type='radio' name='type' onChange={inputChange} data-cy='Bidder' value='bidder' />
                 </div>
                 <Input
                     type="text"
