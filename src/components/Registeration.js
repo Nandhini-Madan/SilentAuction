@@ -4,10 +4,12 @@ import axios from "axios";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 
+
 const Registeration = props => {
-
+    //** REACT 2 */
     let history = useHistory();
-
+    //*** END REACT 2 */
+    
     //Initial state
     const defaultState = {
         firstName: "",
