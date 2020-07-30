@@ -31,15 +31,16 @@ const DisplayAuctionItem = () => {
             .catch(error => console.log('DELETE Error: ', error));
     }
 
-    // const testBE = event => {
-    //     event.preventDefault();
-    //     axios
-    //         .get('https://silent-auction-kb.herokuapp.com/api/items')
-    //         .then(response => {
-    //             console.log('Back End: ', response);
-    //         })
-    //         .catch(error => console.log('Back End Error: ', error));
-    // }
+    const testBE = event => {
+        event.preventDefault();
+        console.log('testing back end');
+        axios
+            .get('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true})
+            .then(response => {
+                console.log('Back End: ', response);
+            })
+            .catch(error => console.log('Back End Error: ', error));
+    }
 
     return (
         <Section>
@@ -53,7 +54,7 @@ const DisplayAuctionItem = () => {
                         <div className='details'><b>Starting Price:</b> {auctionItem.email}</div>
                     </section>
                     <div className='button-holder'>
-                        <Link to={`/auctions`}><button>Place Bid</button></Link>
+                        <Link to={`/auctions`}><button onClick={testBE}>Place Bid</button></Link>
                         <Link to={`/auctions/modify/${params.itemID}`}><button>Modify Auction</button></Link>
                         <Link to={`/auctions`}><button onClick={deleteItem}>Delete Auction</button></Link>
                     </div>
