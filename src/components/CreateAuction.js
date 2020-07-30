@@ -45,7 +45,8 @@ function CreateAuction(props) {
         e.preventDefault();
         console.log('Form submitted');
         axios
-            .post("https://reqres.in/api/users", formState)
+            // .post("https://reqres.in/api/users", formState)
+            .post('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true}, formState)
             .then((res) => {console.log('form submit success', res)
                 setAuctions([...auctions, res.data])})
             .catch(err => console.log('Form submission error', err));
