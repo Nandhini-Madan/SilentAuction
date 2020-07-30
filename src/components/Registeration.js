@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import axios from "axios";
 import * as yup from "yup";
-
+import { useHistory } from "react-router-dom";
 
 
 const Registeration = props => {
@@ -109,7 +109,7 @@ const Registeration = props => {
               console.log("invalid login.", err);
           })    
     }
-    
+
     return (
         <div className="formContainer">
             <form onSubmit={SubmitForm}>
