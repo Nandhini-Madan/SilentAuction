@@ -61,7 +61,7 @@ function Login(props) {
         console.log("login submitted");
 
         //**REACT 2 built and imported axios authentication. */
-        axiosWithAuth().post('auth/login', loginState)
+        axiosWithAuth().post('auth/login', loginState, {withCredentials: true})
         .then(res => {
           console.log(res);
           localStorage.setItem('token', res.data.payload);
