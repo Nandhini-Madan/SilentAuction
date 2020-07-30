@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import * as yup from 'yup';
 import Input from './Input';
 
@@ -61,7 +61,7 @@ function Login(props) {
         console.log("login submitted");
 
         //**REACT 2 built and imported axios authentication. */
-        axiosWithAuth().post('auth/login', loginState)
+        axiosWithAuth().post('auth/login', loginState, {withCredentials: true})
         .then(res => {
           console.log(res);
           localStorage.setItem('token', res.data.payload);
