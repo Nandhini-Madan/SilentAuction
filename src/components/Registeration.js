@@ -33,12 +33,12 @@ const Registeration = props => {
             "Password must contain at least 8 characters, one uppercase, one lowercase,one number and one special case character"
         ),
         retype_password:yup
-                    .string()
-                    .required("Please confirm your password")
-                    .when("password", {
-                        is: password => (FormState.password===FormState.retype_password ? true : false),
-                        then: yup.string().oneOf([yup.ref("password")],"Password doesn't match")
-                    }),
+                    .string()
+                    .required("Please confirm your password")
+                    .when("password", {
+                        is: password => (FormState.password===FormState.retype_password ? true : false),
+                        then: yup.string().oneOf([yup.ref("password")],"Password doesn't match")
+                    }),
         terms: yup.boolean().oneOf([true], 'please accept out terms')
     })
     const [FormState, SetFormState] = useState(defaultState);
@@ -100,7 +100,7 @@ const Registeration = props => {
     const SubmitForm = event => {
         event.preventDefault();
         console.log("Formdata", FormState);
-        axios.post("https://silent-auction-kb.herokuapp.com/api/auth/register", FormState)
+        axios.post("https://silent-auction-kb.herokuapp.com/api/auth/register", FormState, {withCredentials: true})
         .then(res => {
             console.log(res);
             history.push("/login");
@@ -109,6 +109,7 @@ const Registeration = props => {
               console.log("invalid login.", err);
           })    
     }
+
     return (
         <div className="formContainer">
             <form onSubmit={SubmitForm}>
