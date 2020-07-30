@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import axios from "axios";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
+
 const Registeration = props => {
+
+    let history = useHistory();
+
     //Initial state
     const defaultState = {
         firstName: "",
@@ -93,9 +98,14 @@ const Registeration = props => {
     const SubmitForm = event => {
         event.preventDefault();
         console.log("Formdata", FormState);
-        axios.post("https://reqres.in/api/users", FormState)
-            .then(() => console.log('Form Submitted'))
-            .catch(err => console.log('There was a error in form', err));
+        axios.post("https://silent-auction-kb.herokuapp.com/api/auth/register", FormState)
+        .then(res => {
+            console.log(res);
+            history.push("/login");
+          })
+          .catch(err => {
+              console.log("invalid login.", err);
+          })    
     }
     return (
         <div className="formContainer">
