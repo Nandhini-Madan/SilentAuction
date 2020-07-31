@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuctionsContext } from './AuctionsContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -7,8 +7,11 @@ import styled from 'styled-components';
 
 const AuctionGallery = () => {
     // replaced useState with useContext and AuctionsContext
-    const [itemsArray] = useContext(AuctionsContext);
+    const [itemsArray, , getItems] = useContext(AuctionsContext);
     
+    useEffect(() => {
+        getItems();
+    }, [])
     
     // ternary causes items to display if they exist, else displays nothing
     // Link sets path in browser to /item/ and the unique item ID
