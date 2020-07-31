@@ -10,14 +10,19 @@ import ModifyAuctionItems from './components/ModifyAuctionItems';
 import CreateAuction from "./components/CreateAuction";
 // import AuctionCard from './components/AuctionCard';
 
+import PrivateRoute from "./components/PrivateRoute"
+import Footer from "./components/Footer";
+
 function App() {
   return (
+  
     <AuctionsProvider>
       <div className='container'>
+     
         <Header />
         <Route exact path='/auctions' component={AuctionGallery} />
         <Route path='/auctions/:itemID' component={DisplayAuctionItem} />
-        <Route path='/auctions/modify/:itemID' component={ModifyAuctionItems} />
+        <PrivateRoute path='/auctions/modify/:itemID' component={ModifyAuctionItems} />
         <Route path='/item/:itemID'>
           <DisplayAuctionItem />
         </Route>
@@ -28,10 +33,9 @@ function App() {
         <Route path='/Register'>
 	        <Registeration/>
 	      </Route>
-        <Route path='/createAuction'>
-          <CreateAuction />
-        </Route>
-        </Switch>
+        <PrivateRoute path='/createAuction' component={CreateAuction} />
+         </Switch>
+         
       </div>
     </AuctionsProvider>
   );
