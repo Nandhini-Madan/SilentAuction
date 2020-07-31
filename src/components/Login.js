@@ -37,6 +37,7 @@ function Login(props) {
     useEffect(() => {
         if (loginState.username && loginState.password) {
             setButtonDisabled(false);
+
         }
         else if (!loginState.username || !loginState.password) {
             setButtonDisabled(true);
@@ -64,7 +65,8 @@ function Login(props) {
         axiosWithAuth().post('auth/login', loginState, {withCredentials: true})
         .then(res => {
           console.log(res);
-          localStorage.setItem('token', res.data.payload);
+          localStorage.setItem('token', "12345");
+          props.setLoggedIn(true);
           history.push("/auctions");
         })
         .catch(err => {

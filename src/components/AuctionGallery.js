@@ -3,10 +3,13 @@ import { AuctionsContext } from './AuctionsContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+
+
 const AuctionGallery = () => {
     // replaced useState with useContext and AuctionsContext
     const [itemsArray] = useContext(AuctionsContext);
-
+    
+    
     // ternary causes items to display if they exist, else displays nothing
     // Link sets path in browser to /item/ and the unique item ID
     return (
@@ -23,8 +26,11 @@ const AuctionGallery = () => {
                         </div>
                     </Link>
                 )) : null
-            )}
+            ) }
+            
         </Section>
+        
+        
     )
 };
 

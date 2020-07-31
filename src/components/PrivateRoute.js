@@ -12,9 +12,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           // Render the given component if we are logged in and have a token
           return <Component {...props} />;
         } else {
-          // redirect to login if bo token is found
+          // redirect to login if no token is found
           console.log("redirecting!");
-          return <Redirect to="/" />;
+          return <Redirect to="/login" />;
         }
       }}
       
