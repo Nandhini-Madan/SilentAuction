@@ -52,7 +52,7 @@ const DisplayAuctionItem = () => {
         <Section>
             {auctionItem && 
                 <section className='item-container'>
-                    <div className='name'>Auction Item #{params.itemID}</div>
+                    <div className='name'>{auctionItem.itemName}</div>
                     <img src={auctionItem.imageUrl} alt={auctionItem.imageUrl}></img>
                     <section className='detail-container'>
                         <div className='details'><b>Description:</b></div>
