@@ -44,12 +44,8 @@ function CreateAuction(props) {
     const formSubmit = e => {
         e.preventDefault();
         console.log('Form submitted');
-        //axios
-            // .post("https://reqres.in/api/users", formState)
-            // .post('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true}, formState)
-            // .post('https://silent-auction-kb.herokuapp.com/api/items', {data:formState, withCredentials: true})
-            //.post({method: 'POST', url:'https://silent-auction-kb.herokuapp.com/api/items', data:formState, withCredentials: true})
-        axios({method: 'POST', url:'https://silent-auction-kb.herokuapp.com/api/items', data:formState, withCredentials: true})
+        axios
+            ({ method: "POST", url: 'https://silent-auction-kb.herokuapp.com/api/items', data: formState, withCredentials: true })
             .then((res) => {console.log('form submit success', res)
                 setAuctions([...auctions, res.data])})
             .catch(err => console.log('Form submission error', err));
