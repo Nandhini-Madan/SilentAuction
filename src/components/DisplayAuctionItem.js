@@ -6,8 +6,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import Bid from "../components/Bid";
-import PrivateRoute from "./PrivateRoute";
-
 
 const DisplayAuctionItem = () => {
     const [itemsArray] = useContext(AuctionsContext);

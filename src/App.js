@@ -11,7 +11,6 @@ import CreateAuction from "./components/CreateAuction";
 // import AuctionCard from './components/AuctionCard';
 
 import PrivateRoute from "./components/PrivateRoute"
-import Footer from "./components/Footer";
 
 function App() {
   return (

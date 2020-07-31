@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
-import { Link } from 'react-router-dom';
 import '../css/index.css';
 
 const Footer = props => {
