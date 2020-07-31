@@ -5,7 +5,15 @@ import Input from './Input';
 import axios from 'axios';
 import AuctionCard from './AuctionCard';
 
+// react 2
+//import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useHistory } from "react-router-dom";
+
 function CreateAuction(props) {
+    //** REACT 2 */
+    let history = useHistory();
+    //*** END REACT 2 */
+
     const defaultState = {
         itemName: "",
         description: "",
@@ -49,6 +57,8 @@ function CreateAuction(props) {
             .then((res) => {console.log('form submit success', res)
                 setAuctions([...auctions, res.data])})
             .catch(err => console.log('Form submission error', err));
+
+            history.push("/auctions");
     };
 
     const inputChange = e => {

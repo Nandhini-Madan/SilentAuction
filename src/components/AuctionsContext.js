@@ -6,7 +6,7 @@ export const AuctionsContext = createContext();
 
 // provider (holds the data for contect to share)
 export const AuctionsProvider = (props) => {
-    const [itemsArray, setItemsArray] = useState([]);
+    const [itemsArray, setItemsArray] = useState([{}]);
 
     // function to get auction items for gallery display
     const getItems = () => {
@@ -20,6 +20,8 @@ export const AuctionsProvider = (props) => {
             .catch(error => {
                 console.log('axios error: ', error);
             })
+
+        
     }
 
     // initial axios call. runs once (dependency array)
