@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import '../css/index.css';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import axios from 'axios'; // will upgrade to axiosWithAuth
 
 const Footer = props => {
