@@ -66,6 +66,7 @@ function Login(props) {
         .then(res => {
           console.log(res);
           localStorage.setItem('token', "12345");
+          props.setLoggedIn(true);
           history.push("/auctions");
         })
         .catch(err => {
