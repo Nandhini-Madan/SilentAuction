@@ -7,6 +7,7 @@ const Footer = props => {
 
     const logOut = () => {
         localStorage.removeItem("token");
+        props.setLoggedIn(false);
         history.push("/auctions");
     }
 
@@ -14,9 +15,9 @@ const Footer = props => {
 
         <div className="footer-container">
                 <footer>
-                <p>&copy; 2020 <a href={`https://github.com/phmenard`} target="new">Paul H. Menard Jr.</a> </p>  
+                <p>&copy; 2020 <a href={`https://github.com/orgs/Silent-Auction-1/people`} target="new">Silent Auction 1 Team</a> </p>  
 
-                <h3><a href={`https://github.com/phmenard/Auth-Friends`} target="new">Client-Side Authentication</a></h3>
+                <h3><a href={`https://github.com/Silent-Auction-1`} target="new">Silent Auction 1</a></h3>
                 {localStorage.getItem("token") ?
                 <div className="log-out" onClick={logOut}>Log out</div>
             :
