@@ -3,7 +3,7 @@ import { AuctionsContext } from './AuctionsContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Footer from "./Footer";
+
 
 const AuctionGallery = () => {
     // replaced useState with useContext and AuctionsContext
@@ -27,11 +27,7 @@ const AuctionGallery = () => {
                     </Link>
                 )) : null
             ) }
-            <div className="footer">
-            <p>
-                    <Footer />
-            </p>
-            </div>
+            
         </Section>
         
         
