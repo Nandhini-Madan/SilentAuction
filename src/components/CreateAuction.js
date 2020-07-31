@@ -17,7 +17,7 @@ function CreateAuction(props) {
     const defaultState = {
         itemName: "",
         description: "",
-        startingPrice: "", 
+        startingPrice: 0, 
         imageUrl: ""
     };
 
@@ -52,22 +52,8 @@ function CreateAuction(props) {
     const formSubmit = e => {
         e.preventDefault();
         console.log('Form submitted');
-
-        //**REACT 2 built and imported axios authentication. */
-        /*axios.post('api/items', formState, {withCredentials: true})
-        .then(res => {
-          console.log(res);
-          localStorage.setItem('token', res.data.payload);
-          history.push("/auctions");
-        })
-        .catch(err => {
-            console.log("invalid login.", err);
-        })
-        //** END REACT 2 */
-
-
         axios
-            .post("https://silent-auction-kb.herokuapp.com/api/items", formState, {withCredentials: true})
+            ({ method: "POST", url: 'https://silent-auction-kb.herokuapp.com/api/items', data: formState, withCredentials: true })
             .then((res) => {console.log('form submit success', res)
                 setAuctions([...auctions, res.data])})
             .catch(err => console.log('Form submission error', err));
