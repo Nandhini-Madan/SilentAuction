@@ -9,7 +9,7 @@ function CreateAuction(props) {
     const defaultState = {
         itemName: "",
         description: "",
-        startingPrice: "", 
+        startingPrice: 0, 
         imageUrl: ""
     };
 
@@ -45,7 +45,7 @@ function CreateAuction(props) {
         e.preventDefault();
         console.log('Form submitted');
         axios
-            .post("https://reqres.in/api/users", formState)
+            ({ method: "POST", url: 'https://silent-auction-kb.herokuapp.com/api/items', data: formState, withCredentials: true })
             .then((res) => {console.log('form submit success', res)
                 setAuctions([...auctions, res.data])})
             .catch(err => console.log('Form submission error', err));
