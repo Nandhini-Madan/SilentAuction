@@ -57,6 +57,8 @@ function CreateAuction(props) {
             .then((res) => {console.log('form submit success', res)
                 setAuctions([...auctions, res.data])})
             .catch(err => console.log('Form submission error', err));
+
+            history.push("/auctions");
     };
 
     const inputChange = e => {
