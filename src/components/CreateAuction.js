@@ -6,7 +6,7 @@ import axios from 'axios';
 import AuctionCard from './AuctionCard';
 
 // react 2
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+//import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from "react-router-dom";
 
 function CreateAuction(props) {

@@ -7,7 +7,7 @@ const AuctionGallery = () => {
     // replaced useState with useContext and AuctionsContext
     const [itemsArray] = useContext(AuctionsContext);
     
-
+    
     // ternary causes items to display if they exist, else displays nothing
     // Link sets path in browser to /item/ and the unique item ID
     return (
@@ -20,7 +20,7 @@ const AuctionGallery = () => {
                     <Link to={`/auctions/${item.id}`} key={item.id}>
                         <div className='item-container'>
                             <img src={item.imageUrl} alt={item.itemName}></img>
-                            <p className='title'>{item.email}</p>
+                            <p className='title'>{item.itemName}</p>
                         </div>
                     </Link>
                 )) : null
