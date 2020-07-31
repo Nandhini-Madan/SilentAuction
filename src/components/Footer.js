@@ -1,11 +1,24 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import '../css/index.css';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios'; // will upgrade to axiosWithAuth
 
 const Footer = props => {
     const history = useHistory();
 
     const logOut = () => {
+        axios
+        .delete(`https://silent-auction-kb.herokuapp.com/api/auth/logout`, {withCredentials: true})
+        .then(res => {
+          console.log(res);
+                  
+          
+        })
+        .catch(err => {
+            console.log("invalid login.", err);
+        })
+
         localStorage.removeItem("token");
         props.setLoggedIn(false);
         history.push("/auctions");
