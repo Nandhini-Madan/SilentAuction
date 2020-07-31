@@ -25,7 +25,7 @@ const DisplayAuctionItem = () => {
         // event.preventDefault();
         console.log('Delete ID: ', params.itemID);
         axios
-            .delete(`https://reqres.in/api/users/${Number(params.itemID)}`)
+            .delete(`https://reqres.in/api/users/${Number(params.itemID)}`, {withCredentials: true})
             .then(response => {
                 console.log('Delete Results: ', response);
                 // setItemsArray(response.data.data);
@@ -37,15 +37,6 @@ const DisplayAuctionItem = () => {
         setPlaceBid(true);
     }
 
-    // const testBE = event => {
-    //     event.preventDefault();
-    //     axios
-    //         .get('https://silent-auction-kb.herokuapp.com/api/items')
-    //         .then(response => {
-    //             console.log('Back End: ', response);
-    //         })
-    //         .catch(error => console.log('Back End Error: ', error));
-    // }
     const testBE = event => {
         event.preventDefault();
         console.log('testing back end');
