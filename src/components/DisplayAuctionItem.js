@@ -53,11 +53,11 @@ const DisplayAuctionItem = () => {
             {auctionItem && 
                 <section className='item-container'>
                     <div className='name'>Auction Item #{params.itemID}</div>
-                    <img src={auctionItem.avatar} alt={auctionItem.email}></img>
+                    <img src={auctionItem.imageUrl} alt={auctionItem.imageUrl}></img>
                     <section className='detail-container'>
                         <div className='details'><b>Description:</b></div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                        <div className='details'><b>Starting Price:</b> {auctionItem.email}</div>
+                        <div>{auctionItem.description}</div>
+                        <div className='details'><b>Starting Price:</b> {auctionItem.startingPrice}</div>
                     </section>
 
                     {localStorage.getItem("token") ? // use a terany operator to only show action options if user is logged in.
