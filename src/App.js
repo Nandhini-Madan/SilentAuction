@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/header';
 import Registeration from './components/Registeration';
@@ -12,12 +12,18 @@ import CreateAuction from "./components/CreateAuction";
 
 import PrivateRoute from "./components/PrivateRoute"
 
+import Footer from "./components/Footer";
+
 function App() {
+ 
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
-  
+
     <AuctionsProvider>
       <div className='container'>
-     
+
         <Header />
         <Route exact path='/auctions' component={AuctionGallery} />
         <Route path='/auctions/:itemID' component={DisplayAuctionItem} />
@@ -25,16 +31,16 @@ function App() {
         <Route path='/item/:itemID'>
           <DisplayAuctionItem />
         </Route>
-      <Switch>
-        <Route path="/login">
-          <Login/>
-        </Route>
-        <Route path='/Register'>
-	        <Registeration/>
-	      </Route>
-        <PrivateRoute path='/createAuction' component={CreateAuction} />
-         </Switch>
-         
+        <Switch>
+          <Route path="/login">
+            <Login setLoggedIn={setLoggedIn}/>
+          </Route>
+          <Route path='/Register'>
+            <Registeration />
+          </Route>
+          <PrivateRoute path='/createAuction' component={CreateAuction} />
+        </Switch>
+        <Footer loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       </div>
     </AuctionsProvider>
   );
