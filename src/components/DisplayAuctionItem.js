@@ -46,16 +46,16 @@ const DisplayAuctionItem = () => {
     //         })
     //         .catch(error => console.log('Back End Error: ', error));
     // }
-    const testBE = event => {
-        event.preventDefault();
-        console.log('testing back end');
-        axios
-            .get('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true})
-            .then(response => {
-                console.log('Back End: ', response);
-            })
-            .catch(error => console.log('Back End Error: ', error));
-    }
+    // const testBE = event => {
+    //     event.preventDefault();
+    //     console.log('testing back end');
+    //     axios
+    //         .get('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true})
+    //         .then(response => {
+    //             console.log('Back End: ', response);
+    //         })
+    //         .catch(error => console.log('Back End Error: ', error));
+    // }
 
     return (
         <Section>

@@ -18,8 +18,8 @@ const AuctionGallery = () => {
                     // modifies URL, which useParam reads in DisplayAuctionItem.
                     <Link to={`/auctions/${item.id}`} key={item.id}>
                         <div className='item-container'>
-                            <img src={item.avatar} alt={item.email}></img>
-                            <p className='title'>{item.email}</p>
+                            <img src={item.imageUrl} alt={item.description}></img>
+                            <p className='title'>{item.itemName}</p>
                         </div>
                     </Link>
                 )) : null
