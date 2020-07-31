@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import Bid from "../components/Bid";
+import PrivateRoute from "./PrivateRoute";
 
 
 const DisplayAuctionItem = () => {
@@ -19,6 +20,7 @@ const DisplayAuctionItem = () => {
         () => {
             setAuctionItem(itemsArray.find(item => item.id === Number(params.itemID)))
         }, [itemsArray, params.itemID]
+        
     )
 
     const deleteItem = event => {
@@ -37,7 +39,7 @@ const DisplayAuctionItem = () => {
         setPlaceBid(true);
     }
 
-    const testBE = event => {
+    /*const testBE = event => {
         event.preventDefault();
         console.log('testing back end');
         axios
@@ -46,7 +48,7 @@ const DisplayAuctionItem = () => {
                 console.log('Back End: ', response);
             })
             .catch(error => console.log('Back End Error: ', error));
-    }
+    }*/
 
     return (
         <Section>
@@ -59,17 +61,25 @@ const DisplayAuctionItem = () => {
                         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                         <div className='details'><b>Starting Price:</b> {auctionItem.email}</div>
                     </section>
+
+                    {localStorage.getItem("token") ?
                     <div className='button-holder'>
                         <button onClick={placeYourBid}>Place Bid</button>
                         <Link to={`/auctions/modify/${params.itemID}`}><button>Modify Auction</button></Link>
                         <Link to={`/auctions`}><button onClick={deleteItem}>Delete Auction</button></Link>
                         
                         {placeBid ? <div>
+                        
                         <Bid auctionId={params.itemID} setPlaceBid={setPlaceBid}/>
+                        
                         </div>
-                         :""}
+                        
+                        : ""}
                         
                     </div>
+                    : ""}
+                    
+                    
                     <div>Description: {auctionItem.first_name} {auctionItem.last_name}</div>
                     <div>Starting Price: {auctionItem.email}</div>
                     
