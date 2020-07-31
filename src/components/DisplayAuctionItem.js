@@ -62,13 +62,13 @@ const DisplayAuctionItem = () => {
                         <div className='details'><b>Starting Price:</b> {auctionItem.email}</div>
                     </section>
 
-                    {localStorage.getItem("token") ?
+                    {localStorage.getItem("token") ? // use a terany operator to only show action options if user is logged in.
                     <div className='button-holder'>
                         <button onClick={placeYourBid}>Place Bid</button>
                         <Link to={`/auctions/modify/${params.itemID}`}><button>Modify Auction</button></Link>
                         <Link to={`/auctions`}><button onClick={deleteItem}>Delete Auction</button></Link>
                         
-                        {placeBid ? <div>
+                        {placeBid /* this terany opperator will show the Bid componet when the button is clicked. */ ? <div> 
                         
                         <Bid auctionId={params.itemID} setPlaceBid={setPlaceBid}/>
                         
