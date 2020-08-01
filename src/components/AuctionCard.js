@@ -1,15 +1,19 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom'; // have to import to link to auction 
+
 function AuctionCard(props) {
     return (
         <div className='auctionContainer'>
         <h3>Open Auctions</h3>
         <div className="auctionList">
-            {props.auctions.map((auction, i) => (
+            {props.auctions.slice(0).reverse().map((auction, i) => ( // I reversed the array before mapping so that the last action added is the first one shown
                 <div key={i} id="card" className='auctionCard'>
+                    <Link to={`/auctions/${auction.id}`} key={auction.id}>
                     <div className='sub'>
                         {auction.itemName}
                     </div>
+                    </Link>
                     <div className="image">
                        <img src={auction.imageUrl} alt=''/>
                     </div>
