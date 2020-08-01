@@ -7,11 +7,11 @@ import AuctionCard from './AuctionCard';
 
 // react 2
 //import { axiosWithAuth } from '../utils/axiosWithAuth';
-//import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function CreateAuction(props) {
     //** REACT 2 */
-    //let history = useHistory();
+    let history = useHistory();
     //*** END REACT 2 */
 
     const defaultState = {
@@ -58,7 +58,7 @@ function CreateAuction(props) {
                 setAuctions([...auctions, res.data])})
             .catch(err => console.log('Form submission error', err));
 
-           // history.push("/auctions");
+            history.push("/auctions");
     };
 
     const inputChange = e => {
@@ -116,7 +116,7 @@ function CreateAuction(props) {
                 <UploadImage formState={formState} setFormState={setFormState}/>
                 <button disabled={buttonDisabled}>Create Auction</button>
             </form>
-            <AuctionCard auctions={auctions} />
+            {/*<AuctionCard auctions={auctions} />*/}
         </div>
     )
 };
