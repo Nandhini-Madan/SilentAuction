@@ -8,7 +8,7 @@ function AuctionCard(props) { // this is a card not a list.
         <div className='auctionContainer'>
         <h3>Open Auctions</h3>
         <div className="auctionList">
-            {props.auctions.slice(0).reverse().map((auction, i) => ( // I reversed the array before mapping so that the last action added is the first one shown
+            {props.auctions.slice(0).reverse().map((auction, i) => ( // By Paul : I reversed the array before mapping so that the last action added is the first one shown
                 <div key={i} id="card" className='auctionCard'>
                     <Link to={`/auctions/${auction.id}`} key={auction.id}>
                     <div className='sub'>
