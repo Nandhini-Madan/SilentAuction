@@ -320,7 +320,8 @@ input.upload {
   border-radius: 10px;
 }
 img {
-  width: 200px;
+  width: 250px;
+  height: 200px;
 }
 .sub {
   padding: 0px 0px 20px 0px;
@@ -330,4 +331,5 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
