@@ -34,9 +34,9 @@ const AuctionGallery = () => {
                 )) : null
                 ) }*/}
 
-                {/*AuctionGallery(this component) was built to create a "list" of auction cards the AcutionCard component below should not have had a map fuction
-                ,it should not create a list of its own. It should have been given each item to render in its own card this section is the parent
-                Vish had the 52 cards in the deck ... he needs to be able to deal one card at a time*/}
+                {/*AuctionGallery(this component) was built to create a "list" of auction cards. The AcutionCard component below should not have had a map fuction.
+                AuctionCard should not create a list of its own, it was already done. It should have been given each item from the map above to render in its own card.
+                 This section is the parent. Vish had the 52 cards in the deck ... he needs to be able to deal one card at a time*/}
                 <AuctionCard auctions={itemsArray} /> {/* in this case our AuctionCard wants the whole list of "cards/deck" */}
             
         </Section>
