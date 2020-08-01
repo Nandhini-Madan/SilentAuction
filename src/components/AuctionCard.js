@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom'; // have to import to link to auction 
 
-function AuctionCard(props) {
+function AuctionCard(props) { // this is a card not a list.
     return (
         <div className='auctionContainer'>
         <h3>Open Auctions</h3>
