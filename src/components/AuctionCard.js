@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // have to import to link to auction 
 
 function AuctionCard(props) { // this is a card not a list.
-    // Added by Paul if this is just a card and not a list, why do you have the map?
+    // Added by Paul if this is just a card and not a list, why do you have the map? And an auctionList class?
     return (
         <div className='auctionContainer'>
         <h3>Open Auctions</h3>
