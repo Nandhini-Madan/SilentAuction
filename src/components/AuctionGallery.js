@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { AuctionsContext } from './AuctionsContext';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import AuctionCard from './AuctionCard';
 
