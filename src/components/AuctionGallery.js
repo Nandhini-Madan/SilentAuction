@@ -37,7 +37,7 @@ const AuctionGallery = () => {
                 {/*AuctionGallery was built to create a "list" of auction cards the AcutionCard component below should not have had a map fuction
                 ,it should not create a list of its own. It should have been given each item to render in its own card this section is the parent
                 Vish had the 52 cards in the deck ... he needs to be able to deal one card at a time*/}
-                <AuctionCard auctions={itemsArray} /> {/* in this case our card wants the whole list of "cards" */}
+                <AuctionCard auctions={itemsArray} /> {/* in this case our AuctionCard wants the whole list of "cards" */}
             
         </Section>
         
