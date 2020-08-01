@@ -1,14 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import { AuctionsContext } from './AuctionsContext';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import AuctionCard from './AuctionCard';
 
 
 
 const AuctionGallery = () => {
     // replaced useState with useContext and AuctionsContext
     const [itemsArray, , getItems] = useContext(AuctionsContext);
-    
+
     useEffect(() => {
         getItems();
     }, [])
@@ -18,7 +19,7 @@ const AuctionGallery = () => {
     return (
         // console.log('in return: ', itemsArray),
         <Section>
-            {(itemsArray ?
+            {/*{(itemsArray ?
                 itemsArray.map((item, i) => (
                     // "to" string literal populates first param. It dynamically
                     // modifies URL, which useParam reads in DisplayAuctionItem.
@@ -26,10 +27,16 @@ const AuctionGallery = () => {
                         <div className='item-container'>
                             <img src={item.imageUrl} alt={item.itemName}></img>
                             <p className='title'>{item.itemName}</p>
+                            
                         </div>
                     </Link>
                 )) : null
-            ) }
+                ) }*/}
+
+                {/*AuctionGallery(this component) was built to create a "list" of auction cards. The AcutionCard component below should not have had a map fuction.
+                AuctionCard should not create a list of its own, it was already done. It should have been given each item from the map above to render in its own card.
+                 This section is the parent. Vish had the 52 cards in the deck ... he needs to be able to deal one card at a time*/}
+                <AuctionCard auctions={itemsArray} /> {/* in this case our AuctionCard wants the whole list of "cards/deck" */}
             
         </Section>
         
