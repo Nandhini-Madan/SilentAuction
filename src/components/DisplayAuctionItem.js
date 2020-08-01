@@ -44,7 +44,7 @@ const DisplayAuctionItem = () => {
             {auctionItem && 
                 <section className='item-container'>
                     <div className='name'>{auctionItem.itemName}</div>
-                    <img src={auctionItem.imageUrl} alt={auctionItem.imageUrl}></img>
+                    <img src={auctionItem.imageUrl} alt={auctionItem.itemName}></img>
                     <section className='detail-container'>
                         <div className='details'><b>Description:</b></div>
                         <div>{auctionItem.description}</div>
