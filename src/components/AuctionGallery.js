@@ -1,13 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuctionsContext } from './AuctionsContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import AuctionCard from './AuctionCard';
 
 
 
 const AuctionGallery = () => {
     // replaced useState with useContext and AuctionsContext
-    const [itemsArray] = useContext(AuctionsContext);
+    const [itemsArray, , getItems] = useContext(AuctionsContext);
+
+    useEffect(() => {
+        getItems();
+    }, [])
     
     
     // ternary causes items to display if they exist, else displays nothing
@@ -15,18 +20,23 @@ const AuctionGallery = () => {
     return (
         // console.log('in return: ', itemsArray),
         <Section>
-            {(itemsArray ?
-                itemsArray.map(item => (
+            {/*{(itemsArray ?
+                itemsArray.map((item, i) => (
                     // "to" string literal populates first param. It dynamically
                     // modifies URL, which useParam reads in DisplayAuctionItem.
                     <Link to={`/auctions/${item.id}`} key={item.id}>
                         <div className='item-container'>
                             <img src={item.imageUrl} alt={item.itemName}></img>
                             <p className='title'>{item.itemName}</p>
+                            
                         </div>
                     </Link>
                 )) : null
-            ) }
+                ) }*/}
+
+                {/*AuctionGallery was built to create a "list" of auction cards the AcutionCard component below should not have had a map fuction
+                ,it should not create a list of its own. It should have been given each item to render in its own card this section is the parent*/}
+                <AuctionCard auctions={itemsArray} />
             
         </Section>
         
