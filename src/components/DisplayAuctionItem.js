@@ -25,7 +25,9 @@ const DisplayAuctionItem = () => {
         // event.preventDefault();
         console.log('Delete ID: ', params.itemID);
         axios
-            .delete(`https://reqres.in/api/users/${Number(params.itemID)}`, {withCredentials: true})
+            // .delete(`https://reqres.in/api/users/${Number(params.itemID)}`, {withCredentials: true})
+            // .delete(`https://silent-auction-kb.herokuapp.com/api/items/${Number(params.itemID)}`, {withCredentials: true})
+            ({ method: "DELETE", url: `https://silent-auction-kb.herokuapp.com/api/items/${Number(params.itemID)}`, withCredentials: true })
             .then(response => {
                 console.log('Delete Results: ', response);
                 // setItemsArray(response.data.data);
@@ -36,17 +38,6 @@ const DisplayAuctionItem = () => {
     const placeYourBid = () =>{
         setPlaceBid(true);
     }
-
-    /*const testBE = event => {
-        event.preventDefault();
-        console.log('testing back end');
-        axios
-            .get('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true})
-            .then(response => {
-                console.log('Back End: ', response);
-            })
-            .catch(error => console.log('Back End Error: ', error));
-    }*/
 
     return (
         <Section>
@@ -75,12 +66,7 @@ const DisplayAuctionItem = () => {
                         : ""}
                         
                     </div>
-                    : ""}
-                    
-                    
-                    <div>Description: {auctionItem.first_name} {auctionItem.last_name}</div>
-                    <div>Starting Price: {auctionItem.email}</div>
-                    
+                    : ""}                    
                 </section>
             }
         </Section>

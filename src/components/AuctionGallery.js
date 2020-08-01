@@ -19,10 +19,10 @@ const AuctionGallery = () => {
         // console.log('in return: ', itemsArray),
         <Section>
             {(itemsArray ?
-                itemsArray.map(item => (
+                itemsArray.map((item, i) => (
                     // "to" string literal populates first param. It dynamically
                     // modifies URL, which useParam reads in DisplayAuctionItem.
-                    <Link to={`/auctions/${item.id}`} key={item.id}>
+                    <Link to={`/auctions/${item.id}`} key={i}>
                         <div className='item-container'>
                             <img src={item.imageUrl} alt={item.itemName}></img>
                             <p className='title'>{item.itemName}</p>
