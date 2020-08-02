@@ -52,14 +52,14 @@ const ModifyAuctionItems = () => {
             {auctionItem && 
                 <section className='item-container'>
                     <div className='name'>Modify Auction Item #{params.itemID}</div>
-                    <img src={auctionItem.avatar} alt={auctionItem.email}></img>
+                    <img src={auctionItem.imageUrl} alt={auctionItem.imageUrl}></img>
                     <form className='detail-container' onSubmit={submitItem}>
                         <div className='details'><b>Name:</b></div>
-                        <input type='text' name='first_name' placeholder='Name' value={auctionItem.first_name} onChange={updateName}/>
+                        <input type='text' name='first_name' placeholder='Name' value={auctionItem.itemName} onChange={updateName}/>
                         <div className='details'><b>Description:</b></div>
-                        <input type='textbox' name='avatar' placeholder='Description' value={auctionItem.avatar} onChange={updateAvatar}/>
+                        <input type='textbox' name='avatar' placeholder='Description' value={auctionItem.description} onChange={updateAvatar}/>
                         <div className='details'><b>Starting Price:</b></div>
-                        <input type='text' name='email' placeholder='Starting price' value={auctionItem.email} onChange={updateEmail}/>
+                        <input type='text' name='email' placeholder='Starting price' value={auctionItem.startingPrice} onChange={updateEmail}/>
                         <button>Submit</button>
                     </form>
                 </section>
