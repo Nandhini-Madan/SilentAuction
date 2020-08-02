@@ -7,7 +7,7 @@ const Footer = props => {
     const history = useHistory();
 
     const logOut = () => {
-        axios
+        /*axios
         .delete(`https://silent-auction-kb.herokuapp.com/api/auth/logout`, {withCredentials: true})
         .then(res => {
           console.log(res);
@@ -16,7 +16,7 @@ const Footer = props => {
         })
         .catch(err => {
             console.log("invalid login.", err);
-        })
+        })*/ // comented out for now until we talk to Kim.
 
         localStorage.removeItem("token");
         props.setLoggedIn(false);
