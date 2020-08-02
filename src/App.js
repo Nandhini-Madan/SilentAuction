@@ -24,10 +24,11 @@ function App() {
 
   return (
 
-    <AuctionsProvider>
       <div className='container'>
+    <AuctionsProvider>
 
         <Header />
+        <div className='mainbody'>
         <Route exact path='/auctions' component={AuctionGallery} />
         <Route path='/auctions/:itemID' component={DisplayAuctionItem} />
         <PrivateRoute path='/auctions/modify/:itemID' component={ModifyAuctionItems} />
@@ -44,8 +45,9 @@ function App() {
           <PrivateRoute path='/createAuction' component={CreateAuction} />
         </Switch>
         <Footer loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-      </div>
+        </div>
     </AuctionsProvider>
+      </div>
   );
 }
 
