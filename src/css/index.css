@@ -319,6 +319,13 @@ input.upload {
   text-align: left;
   border-radius: 10px;
 }
+.auctionCard a {
+  color: unset;
+  text-decoration: unset;
+}
+.auctionCard a :hover {
+  color: white;
+}
 img {
   width: 250px;
   height: 200px;
