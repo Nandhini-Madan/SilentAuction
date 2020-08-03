@@ -23,14 +23,14 @@ const ModifyAuctionItems = () => {
         });
     }
 
-    const updateAvatar = event => {
+    const updateDescription = event => {
         setAuctionItem({
             ...auctionItem,
             [event.target.name]: event.target.value
         });
     }
 
-    const updateEmail = event => {
+    const updatePrice = event => {
         setAuctionItem({
             ...auctionItem,
             [event.target.name]: event.target.value
@@ -39,10 +39,11 @@ const ModifyAuctionItems = () => {
 
     const submitItem = event => {
         event.preventDefault();
-        console.log('itemsArray: ', itemsArray[params.itemID-1]);
+        console.log('itemsArray: ', itemsArray[params.itemID]);
         console.log('auctionItem: ', auctionItem);
         axios
-            .put(`https://reqres.in/api/users/${Number(params.itemID-1)}`, {name: auctionItem.first_name, job: auctionItem.avatar})
+            // .put(`https://reqres.in/api/users/${Number(params.itemID-1)}`, {name: auctionItem.first_name, job: auctionItem.avatar})
+            ({ method: "PUT", url: `https://silent-auction-kb.herokuapp.com/api/items/${Number(params.itemID)}`, data: auctionItem, withCredentials: true })
             .then(response => console.log('submitItem: ', response))
             .catch(error => console.log('submitItem: ', error));
     }
@@ -51,15 +52,15 @@ const ModifyAuctionItems = () => {
         <Section>
             {auctionItem && 
                 <section className='item-container'>
-                    <div className='name'>Modify Auction Item #{params.itemID}</div>
-                    <img src={auctionItem.avatar} alt={auctionItem.email}></img>
+                    <div className='name'>Modify {auctionItem.itemName}</div>
+                    <img src={auctionItem.imageUrl} alt={auctionItem.itemName}></img>
                     <form className='detail-container' onSubmit={submitItem}>
                         <div className='details'><b>Name:</b></div>
-                        <input type='text' name='first_name' placeholder='Name' value={auctionItem.first_name} onChange={updateName}/>
+                        <input type='text' name='itemName' placeholder='Name' value={auctionItem.itemName} onChange={updateName}/>
                         <div className='details'><b>Description:</b></div>
-                        <input type='textbox' name='avatar' placeholder='Description' value={auctionItem.avatar} onChange={updateAvatar}/>
+                        <input type='textbox' name='description' placeholder='Description' value={auctionItem.description} onChange={updateDescription}/>
                         <div className='details'><b>Starting Price:</b></div>
-                        <input type='text' name='email' placeholder='Starting price' value={auctionItem.email} onChange={updateEmail}/>
+                        <input type='text' name='startingPrice' placeholder='Starting price' value={auctionItem.startingPrice} onChange={updatePrice}/>
                         <button>Submit</button>
                     </form>
                 </section>

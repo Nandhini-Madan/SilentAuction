@@ -47,6 +47,7 @@ function CreateAuction(props) {
         else if (!formState.itemName || !formState.description || !formState.startingPrice) {
             setButtonDisabled(true);
         }
+        return () => console.log("The Effect Hook has been cleaned up.");
     }, [formState]);
 
     const formSubmit = e => {

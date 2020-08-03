@@ -16,7 +16,7 @@ function AuctionCard(props) { // this is a card not a list.
                     </div>
                     </Link>
                     <div className="image">
-                       <img src={auction.imageUrl} alt=''/>
+                       <img src={auction.imageUrl} alt={auction.itemName}/>
                     </div>
                     <div className='sub'>
                         Description:  {auction.description}

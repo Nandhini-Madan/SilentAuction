@@ -25,7 +25,9 @@ const DisplayAuctionItem = () => {
         // event.preventDefault();
         console.log('Delete ID: ', params.itemID);
         axios
-            .delete(`https://reqres.in/api/users/${Number(params.itemID)}`, {withCredentials: true})
+            // .delete(`https://reqres.in/api/users/${Number(params.itemID)}`, {withCredentials: true})
+            // .delete(`https://silent-auction-kb.herokuapp.com/api/items/${Number(params.itemID)}`, {withCredentials: true})
+            ({ method: "DELETE", url: `https://silent-auction-kb.herokuapp.com/api/items/${Number(params.itemID)}`, withCredentials: true })
             .then(response => {
                 console.log('Delete Results: ', response);
                 // setItemsArray(response.data.data);
@@ -37,23 +39,12 @@ const DisplayAuctionItem = () => {
         setPlaceBid(true);
     }
 
-    /*const testBE = event => {
-        event.preventDefault();
-        console.log('testing back end');
-        axios
-            .get('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true})
-            .then(response => {
-                console.log('Back End: ', response);
-            })
-            .catch(error => console.log('Back End Error: ', error));
-    }*/
-
     return (
         <Section>
             {auctionItem && 
                 <section className='item-container'>
                     <div className='name'>{auctionItem.itemName}</div>
-                    <img src={auctionItem.imageUrl} alt={auctionItem.imageUrl}></img>
+                    <img src={auctionItem.imageUrl} alt={auctionItem.itemName}></img>
                     <section className='detail-container'>
                         <div className='details'><b>Description:</b></div>
                         <div>{auctionItem.description}</div>
@@ -75,12 +66,7 @@ const DisplayAuctionItem = () => {
                         : ""}
                         
                     </div>
-                    : ""}
-                    
-                    
-                    <div>Description: {auctionItem.first_name} {auctionItem.last_name}</div>
-                    <div>Starting Price: {auctionItem.email}</div>
-                    
+                    : ""}                    
                 </section>
             }
         </Section>
