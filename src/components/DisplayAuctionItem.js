@@ -7,7 +7,6 @@ import axios from 'axios';
 
 import Bid from "../components/Bid";
 
-
 const DisplayAuctionItem = () => {
     const [itemsArray] = useContext(AuctionsContext);
     const params = useParams();
@@ -19,6 +18,7 @@ const DisplayAuctionItem = () => {
         () => {
             setAuctionItem(itemsArray.find(item => item.id === Number(params.itemID)))
         }, [itemsArray, params.itemID]
+        
     )
 
     const deleteItem = event => {
@@ -37,39 +37,47 @@ const DisplayAuctionItem = () => {
         setPlaceBid(true);
     }
 
-//     const testBE = event => {
-//         event.preventDefault();
-//         console.log('testing back end');
-//         axios
-//             .get('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true})
-//             .then(response => {
-//                 console.log('Back End: ', response);
-//             })
-//             .catch(error => console.log('Back End Error: ', error));
-//     }
+    /*const testBE = event => {
+        event.preventDefault();
+        console.log('testing back end');
+        axios
+            .get('https://silent-auction-kb.herokuapp.com/api/items', {withCredentials: true})
+            .then(response => {
+                console.log('Back End: ', response);
+            })
+            .catch(error => console.log('Back End Error: ', error));
+    }*/
 
     return (
         <Section>
             {auctionItem && 
                 <section className='item-container'>
-                    <div className='name'>Auction Item #{params.itemID}</div>
-                    <img src={auctionItem.avatar} alt={auctionItem.email}></img>
+                    <div className='name'>{auctionItem.itemName}</div>
+                    <img src={auctionItem.imageUrl} alt={auctionItem.imageUrl}></img>
                     <section className='detail-container'>
                         <div className='details'><b>Description:</b></div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                        <div className='details'><b>Starting Price:</b> {auctionItem.email}</div>
+                        <div>{auctionItem.description}</div>
+                        <div className='details'><b>Starting Price:</b> {auctionItem.startingPrice}</div>
                     </section>
+
+                    {localStorage.getItem("token") ? // use a terany operator to only show action options if user is logged in.
                     <div className='button-holder'>
                         <button onClick={placeYourBid}>Place Bid</button>
                         <Link to={`/auctions/modify/${params.itemID}`}><button>Modify Auction</button></Link>
                         <Link to={`/auctions`}><button onClick={deleteItem}>Delete Auction</button></Link>
                         
-                        {placeBid ? <div>
+                        {placeBid /* this terany opperator will show the Bid componet when the button is clicked. */ ? <div> 
+                        
                         <Bid auctionId={params.itemID} setPlaceBid={setPlaceBid}/>
+                        
                         </div>
-                         :""}
+                        
+                        : ""}
                         
                     </div>
+                    : ""}
+                    
+                    
                     <div>Description: {auctionItem.first_name} {auctionItem.last_name}</div>
                     <div>Starting Price: {auctionItem.email}</div>
                     

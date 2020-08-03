@@ -116,7 +116,7 @@ function CreateAuction(props) {
                 <UploadImage formState={formState} setFormState={setFormState}/>
                 <button disabled={buttonDisabled}>Create Auction</button>
             </form>
-            <AuctionCard auctions={auctions} />
+            {/*<AuctionCard auctions={auctions} />*/}
         </div>
     )
 };

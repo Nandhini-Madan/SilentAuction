@@ -44,7 +44,7 @@ function UploadImage(props) {
             {loading ? (
                 <h3 className="imageContainer">Loading</h3>
             ) : (
-                    <img src={image} style={{ width: '100px' }} alt="" />
+                    <img src={image} style={{ width: '0px', height: '0px' }} alt="" />
                 )}
         </div>
     );

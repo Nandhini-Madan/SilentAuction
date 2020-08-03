@@ -135,30 +135,40 @@ html {
   background-image: linear-gradient(0deg, #41D5DC 0%, #E9EFF7 100%);
   min-height: 100vh;
 }
+.mainbody {
+  padding-top: 90px;
+}
 nav {
   display: flex;
-  min-width: 90vw;
+  min-width: 100vw;
   height: 6vh;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  padding: 0 16px;
+  margin: 0 12px 0 0;
+  padding: 0 6px 0 6px;
   border-bottom: 1px solid #efefef;
   margin-bottom: 32px;
+  position: fixed;
+  overflow: hidden;
+  background-color: #7dbae6;
 }
 .nav-links {
+  padding-right: 24px;
   display: flex;
   justify-content: space-between;
 }
 .nav-links a {
-  color: #FFA07A;
+  color: #ee9471;
   text-decoration: none;
   font-weight: bold;
   margin-right: 8px;
 }
 .pageHeader {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  color: white;
+  padding-left: 24px;
 }
 .formContainer {
   min-height: 70vh;
@@ -238,6 +248,45 @@ input.upload {
   background: transparent;
   border: none;
 }
+.footer-container {
+  display: flex;
+  justify-content: center;
+}
+.footer-container footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  height: 50px;
+  background-color: #7dbae6;
+  margin-top: 1%;
+  width: 98%;
+  border-radius: 3px;
+}
+.footer-container footer h3 {
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+.footer-container footer a {
+  color: unset;
+}
+.footer-container footer a:hover {
+  color: white;
+}
+.footer-container footer .log-out {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #4e4e52;
+  padding: 5px;
+  color: white;
+  box-shadow: 2px 2px grey;
+  height: 15px;
+  width: 75px;
+  border: 2px solid orange;
+  cursor: pointer;
+}
 .bid {
   display: flex;
   justify-content: space-evenly;
@@ -281,7 +330,8 @@ input.upload {
   border-radius: 10px;
 }
 img {
-  width: 200px;
+  width: 250px;
+  height: 200px;
 }
 .sub {
   padding: 0px 0px 20px 0px;
@@ -291,4 +341,5 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }

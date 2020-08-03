@@ -33,7 +33,7 @@ export const AuctionsProvider = (props) => {
 
     return (
         // shares context/state to all child components
-        <AuctionsContext.Provider value={[itemsArray, setItemsArray]}>
+        <AuctionsContext.Provider value={[itemsArray, setItemsArray, getItems]}>
             {props.children}
         </AuctionsContext.Provider>
     )

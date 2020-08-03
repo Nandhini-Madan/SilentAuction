@@ -22,8 +22,7 @@ const Bid = (props) => {
         bid.item_id = props.auctionId;
         
         bid.created_at = Math.floor(Date.now() / 1000);
-        //axiosWithAuth().post(`items/${bid.item_id}/bids`, bid, {credentials: 'include'})
-        axiosWithAuth().fetch(`items/${bid.item_id}/bids`, bid, {withCredentials: true})
+        axiosWithAuth().post(`items/${bid.item_id}/bids`, bid, {withCredentials: true})
         .then(res => {
           console.log(res);
           
