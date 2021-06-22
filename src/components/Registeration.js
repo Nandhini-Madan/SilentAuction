@@ -82,11 +82,7 @@ const Registeration = props => {
                 }
 
             )
-        //      const handleChange = e => {
-
-
-
-        //  }
+       
 
         console.log("Previous State", FormState);
     }

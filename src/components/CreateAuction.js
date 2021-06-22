@@ -3,7 +3,7 @@ import UploadImage from './UploadImage';
 import * as yup from 'yup';
 import Input from './Input';
 import axios from 'axios';
-import AuctionCard from './AuctionCard';
+//import AuctionCard from './AuctionCard';
 
 // react 2
 //import { axiosWithAuth } from '../utils/axiosWithAuth';

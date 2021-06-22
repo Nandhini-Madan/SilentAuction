@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/header';
 import Registeration from './components/Registeration';
 import Login from "./components/Login";
-import { AuctionsProvider, AuctionsContext } from './components/AuctionsContext';
+import { AuctionsProvider} from './components/AuctionsContext';
 import AuctionGallery from './components/AuctionGallery';
 import DisplayAuctionItem from './components/DisplayAuctionItem';
 import ModifyAuctionItems from './components/ModifyAuctionItems';
